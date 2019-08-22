@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2019%2F08%2F21%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[黄]]></title>
     <url>%2F2019%2F08%2F21%2F%E9%BB%84%2F</url>
     <content type="text"></content>
@@ -17,13 +22,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[onhmygod]]></title>
-    <url>%2F2019%2F08%2F08%2Fonhmygod%2F</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2019%2F08%2F08%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <title><![CDATA[webpack学习笔记]]></title>
+    <url>%2F2019%2F08%2F08%2Fwebpack%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[看懂webpack.config.js entry123module.exports=&#123; entry:&apos;./path/to/my/entry/file.js&apos;&#125;； 默认值是./src/index.js;入口起点 output123456789const path = require(&apos;path&apos;);module.exports = &#123; entry: &apos;./path/to/my/entry/file.js&apos;, output: &#123; path: path.resolve(__dirname, &apos;dist&apos;), filename: &apos;my-first-webpack.bundle.js&apos; &#125;&#125;; path定义导入的模块，filename指bunble生成的名件名称及地址]]></content>
+      <categories>
+        <category>webpack</category>
+      </categories>
+      <tags>
+        <tag>webpack</tag>
+      </tags>
   </entry>
 </search>

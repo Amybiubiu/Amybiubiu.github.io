@@ -353,7 +353,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/黄/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/21/webpack-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="黄路遥">
@@ -367,7 +367,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
             
-            <a href="/2019/08/21/黄/" class="post-title-link" itemprop="url">黄</a>
+            <a href="/2019/08/21/webpack-2/" class="post-title-link" itemprop="url">webpack-2</a>
           
         </h1>
 
@@ -385,9 +385,34 @@
               <time title="创建时间：2019-08-21 13:51:46" itemprop="dateCreated datePublished" datetime="2019-08-21T13:51:46+08:00">2019-08-21</time>
             </span>
           
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-08-23 17:09:33" itemprop="dateModified" datetime="2019-08-23T17:09:33+08:00">2019-08-23</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
-            <span id="/2019/08/21/黄/" class="post-meta-item leancloud_visitors" data-flag-title="黄" title="阅读次数">
+            <span id="/2019/08/21/webpack-2/" class="post-meta-item leancloud_visitors" data-flag-title="webpack-2" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -405,7 +430,7 @@
       
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/08/21/黄/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/08/21/黄/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/2019/08/21/webpack-2/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/08/21/webpack-2/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -419,7 +444,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
+          <h4 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a><a href="https://webpack.docschina.org/guides/development" target="_blank" rel="noopener">开发环境</a></h4><ul>
+<li><code>mode: &#39;development&#39;,</code></li>
+<li><code>devtool: &#39;inline-source-map&#39;,</code>……<code>plugins: [</code></li>
+</ul><p>使用 source map ，准确地知道错误来自于哪个源文件，</p><ul>
+<li>watch mode</li>
+</ul><p>npm run watch 浏览器可自动更新</p><ul>
+<li>webpack-dev-server/webpack-dev-middleware</li>
+</ul>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/08/21/webpack-2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -594,7 +635,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-22 18:31:28" itemprop="dateModified" datetime="2019-08-22T18:31:28+08:00">2019-08-22</time>
+                <time title="修改时间：2019-08-23 16:35:22" itemprop="dateModified" datetime="2019-08-23T16:35:22+08:00">2019-08-23</time>
               </span>
             
           
@@ -604,7 +645,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/webpack/" itemprop="url" rel="index"><span itemprop="name">webpack</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/notes/" itemprop="url" rel="index"><span itemprop="name">notes</span></a></span>
 
                 
                 
@@ -645,15 +686,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="看懂webpack-config-js"><a href="#看懂webpack-config-js" class="headerlink" title="看懂webpack.config.js"></a>看懂webpack.config.js</h4><ul>
-<li>entry<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module.exports=&#123;</span><br><span class="line">    entry:&apos;./path/to/my/entry/file.js&apos;</span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul><p>默认值是./src/index.js;入口起点</p><ul>
-<li>output<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  entry: &apos;./path/to/my/entry/file.js&apos;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &apos;dist&apos;),</span><br><span class="line">    filename: &apos;my-first-webpack.bundle.js&apos;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
+          <p>[TOC]</p><h4 id="看懂webpack-config-js"><a href="#看懂webpack-config-js" class="headerlink" title="看懂webpack.config.js"></a><a href="https://webpack.docschina.org/concepts" target="_blank" rel="noopener">看懂webpack.config.js</a></h4><ol>
+<li>entry</li>
+</ol><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports=&#123;</span><br><span class="line">    entry:<span class="string">'./path/to/my/entry/file.js'</span></span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure><p>默认值是./src/index.js;入口起点</p><ol start="2">
+<li>output</li>
+</ol><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'./path/to/my/entry/file.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">    filename: <span class="string">'my-first-webpack.bundle.js'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -732,6 +769,8 @@
           
         
         
+        
+          
         
           
         

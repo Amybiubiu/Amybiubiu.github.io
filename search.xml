@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[muxi]]></title>
+    <url>%2F2019%2F09%2F11%2Fmuxi%2F</url>
+    <content type="text"><![CDATA[木犀前端机试在原有代码下增添代码实现如下效果![效果图片](muxi/muxi.png）动画效果图片无法展示要求 实现绿色盒子内文字的水平和垂直居中 鼠标悬停在蓝色盒子区域时对应区域透明度为0.3 使标题“task1”实现1.从右往左滑动进入页面的效果 2.滑动过程中颜色由红变黑 poem文字内容与边框间距为30px; poem文字区域在原位置上水平右移20px;垂直方向下移40px;注意不能使用margin，用margin做出的效果不同； 建议在编写代码之前，你需要有一个编辑器。 在线编辑器。 本地编辑器vscode下载地址 参考资料 MDN HTML 入门 MDN HTML 元素 w3school CSS 教程 CSS水平垂直居中常见方法总结]]></content>
+      <categories>
+        <category>Task</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2019%2F08%2F21%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
@@ -8,7 +16,7 @@
   <entry>
     <title><![CDATA[webpack-2]]></title>
     <url>%2F2019%2F08%2F21%2Fwebpack-2%2F</url>
-    <content type="text"><![CDATA[开发环境 mode: &#39;development&#39;, devtool: &#39;inline-source-map&#39;,……plugins: [ 使用 source map ，准确地知道错误来自于哪个源文件， watch mode npm run watch 浏览器可自动更新 webpack-dev-server/webpack-dev-middleware 对server.js文件进行配置，npm start 在3000端口运行]]></content>
+    <content type="text"><![CDATA[开发环境 mode: &#39;development&#39;, devtool: &#39;inline-source-map&#39;,……plugins: [ 使用 source map ，准确地知道错误来自于哪个源文件， watch mode npm run watch 浏览器可自动更新 webpack-dev-server/webpack-dev-middleware 对server.js文件进行配置，npm start 在3000端口运行此时dist文件夹不会有文件，而是生成在浏览器的缓存中。]]></content>
       <categories>
         <category>notes</category>
       </categories>
@@ -17,15 +25,12 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[my new post]]></title>
+    <title><![CDATA[木犀机试]]></title>
     <url>%2F2019%2F08%2F21%2Fmy-new-post%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[木犀前端机试在原有代码下增添代码实现如下效果![效果图片](./images/muxi.png）动画效果图片无法展示要求 实现绿色盒子内文字的水平和垂直居中 鼠标悬停在蓝色盒子区域时对应区域透明度为0.3 使标题“task1”实现1.从右往左滑动进入页面的效果 2.滑动过程中颜色由红变黑 poem文字内容与边框间距为30px; poem文字区域在原位置上水平右移20px;垂直方向下移40px;注意不能使用margin，用margin做出的效果不同； 建议在编写代码之前，你需要有一个编辑器。 在线编辑器。 本地编辑器vscode下载地址 参考资料 MDN HTML 入门 MDN HTML 元素 w3school CSS 教程 CSS水平垂直居中常见方法总结]]></content>
       <categories>
-        <category>Diary</category>
+        <category>Task</category>
       </categories>
-      <tags>
-        <tag>Games</tag>
-      </tags>
   </entry>
   <entry>
     <title><![CDATA[webpack学习笔记]]></title>

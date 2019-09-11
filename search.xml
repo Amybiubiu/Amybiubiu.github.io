@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[muxi]]></title>
     <url>%2F2019%2F09%2F11%2Fmuxi%2F</url>
-    <content type="text"><![CDATA[木犀前端机试在原有代码下增添代码实现如下效果![效果图片](muxi/muxi.png）动画效果图片无法展示要求 实现绿色盒子内文字的水平和垂直居中 鼠标悬停在蓝色盒子区域时对应区域透明度为0.3 使标题“task1”实现1.从右往左滑动进入页面的效果 2.滑动过程中颜色由红变黑 poem文字内容与边框间距为30px; poem文字区域在原位置上水平右移20px;垂直方向下移40px;注意不能使用margin，用margin做出的效果不同； 建议在编写代码之前，你需要有一个编辑器。 在线编辑器。 本地编辑器vscode下载地址 参考资料 MDN HTML 入门 MDN HTML 元素 w3school CSS 教程 CSS水平垂直居中常见方法总结]]></content>
+    <content type="text"><![CDATA[木犀前端机试在原有代码下增添代码实现如下效果![效果图片](muxi/muxi.jpg）动画效果图片无法展示要求 实现绿色盒子内文字的水平和垂直居中 鼠标悬停在蓝色盒子区域时对应区域透明度为0.3 使标题“task1”实现1.从右往左滑动进入页面的效果 2.滑动过程中颜色由红变黑 poem文字内容与边框间距为30px; poem文字区域在原位置上水平右移20px;垂直方向下移40px;注意不能使用margin，用margin做出的效果不同； 建议在编写代码之前，你需要有一个编辑器。 在线编辑器。 本地编辑器vscode下载地址 参考资料 MDN HTML 入门 MDN HTML 元素 w3school CSS 教程 CSS水平垂直居中常见方法总结]]></content>
       <categories>
         <category>Task</category>
       </categories>

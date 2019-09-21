@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="不同语言之间的转换 高级程序语言经过编译，变成汇编代码，汇编代码经过汇编器和连接器变成可执行的机器代码。汇编代码是人类可读的代码。机器代码是01序列。  在程序执行前，数据和指令事先存放在存储器中，每条指令和每个数据都有地址。程序启动后，计算机取指令执行。执行过程中，指令和数据从存储器取到CPU，存放到CPU寄存器中，CPU内的寄存器与控制器与ALU进行数据传送与运算，将运算结果写入内存中（存储">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数调用栈">
+<meta property="og:url" content="http://yoursite.com/2019/09/18/函数调用栈/index.html">
+<meta property="og:site_name" content="Luyao">
+<meta property="og:description" content="不同语言之间的转换 高级程序语言经过编译，变成汇编代码，汇编代码经过汇编器和连接器变成可执行的机器代码。汇编代码是人类可读的代码。机器代码是01序列。  在程序执行前，数据和指令事先存放在存储器中，每条指令和每个数据都有地址。程序启动后，计算机取指令执行。执行过程中，指令和数据从存储器取到CPU，存放到CPU寄存器中，CPU内的寄存器与控制器与ALU进行数据传送与运算，将运算结果写入内存中（存储">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/函数调用栈/pic2.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/函数调用栈/pic3.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/函数调用栈/pic7.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/函数调用栈/pic4.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/函数调用栈/pic5.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/函数调用栈/pic6.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/函数调用栈/pic8.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/函数调用栈/pic9.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/函数调用栈/pic10.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/18/函数调用栈/pic11.png">
+<meta property="og:updated_time" content="2019-09-21T02:58:22.773Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="函数调用栈">
+<meta name="twitter:description" content="不同语言之间的转换 高级程序语言经过编译，变成汇编代码，汇编代码经过汇编器和连接器变成可执行的机器代码。汇编代码是人类可读的代码。机器代码是01序列。  在程序执行前，数据和指令事先存放在存储器中，每条指令和每个数据都有地址。程序启动后，计算机取指令执行。执行过程中，指令和数据从存储器取到CPU，存放到CPU寄存器中，CPU内的寄存器与控制器与ALU进行数据传送与运算，将运算结果写入内存中（存储">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/18/函数调用栈/pic2.png">
+  <link rel="canonical" href="http://yoursite.com/2019/09/18/函数调用栈/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>函数调用栈 | Luyao</title>
+  <meta name="generator" content="Hexo 3.9.0">
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Luyao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-wrapper">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/18/函数调用栈/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="黄路遥">
+      <meta itemprop="description" content="沉心静气，就地修仙">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luyao">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">函数调用栈
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-18 17:43:23" itemprop="dateCreated datePublished" datetime="2019-09-18T17:43:23+08:00">2019-09-18</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-21 10:58:22" itemprop="dateModified" datetime="2019-09-21T10:58:22+08:00">2019-09-21</time>
+              </span>
+            
+          
+
+          
+            <span id="/2019/09/18/函数调用栈/" class="post-meta-item leancloud_visitors" data-flag-title="函数调用栈" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/09/18/函数调用栈/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/18/函数调用栈/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="不同语言之间的转换"><a href="#不同语言之间的转换" class="headerlink" title="不同语言之间的转换"></a>不同语言之间的转换</h4><ul>
+<li><p>高级程序语言经过编译，变成汇编代码，汇编代码经过汇编器和连接器变成可执行的机器代码。汇编代码是人类可读的代码。机器代码是01序列。</p>
+</li>
+<li><p>在程序执行前，数据和指令事先存放在存储器中，每条指令和每个数据都有地址。程序启动后，计算机取指令执行。执行过程中，指令和数据从存储器取到CPU，存放到CPU寄存器中，CPU内的寄存器与控制器与ALU进行数据传送与运算，将运算结果写入内存中（存储器）。</p>
+<!-- ![IA-32的体系结构](函数调用栈/pic2.png) -->
+<!-- ![ALU结构原理](函数调用栈/pic3.png) -->
+<div align="center">
+<img src="/2019/09/18/函数调用栈/pic2.png" height="200px" width="400px">
+</div>
+<div align="center">
+<img src="/2019/09/18/函数调用栈/pic3.png" height="200px" width="400px">
+</div>
+</li>
+<li><p>寄存器<br>IA-32体系中，有8个通用寄存器GPR，2个专用寄存器EIP和EFLAGs和六个段寄存器，间接给出段基址。</p>
+<!-- ![寄存器](函数调用栈/pic7.png) -->
+<div align="center">
+<img src="/2019/09/18/函数调用栈/pic7.png" height="200px" width="400px">
+</div>
+
+</li>
+</ul><a id="more"></a>
+<h4 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h4><ul>
+<li><p>计算机的指令有微指令、机器指令和伪指令之分。汇编指令是机器指令的符号表示，以帮助记忆，可以称之为助记符。机器指令和汇编指令是一一对应的，都是机器级指令。</p>
+</li>
+<li><p>机器指令对源操作数进行操作，操作结果储存到目的操作数中。操作码：操作性质；立即数：操作数在指令中给出，这个数叫做立即数。找到操作数或操作数的地址这个过程叫寻址，操作数在不同的位置，有不同的<a href="https://www.icourse163.org/learn/NJU-1001625001#/learn/content?type=detail&id=1211390571&cid=1214042296" target="_blank" rel="noopener">寻址方式</a>。</p>
+<!-- ![机器指令](函数调用栈/pic4.png) -->
+<!-- ![汇编指令](函数调用栈/pic5.png) -->
+<div align="center">
+<img src="/2019/09/18/函数调用栈/pic4.png" height="100px" width="400px">
+</div>
+<div align="center">
+<img src="/2019/09/18/函数调用栈/pic5.png" height="100px" width="400px">
+</div>
+将cl寄存器中的内容传送到该地址的存储单元中。
+<!-- ![指令功能](函数调用栈/pic6.png) -->
+<div align="center">
+<img src="/2019/09/18/函数调用栈/pic6.png" height="100px" width="400px">
+</div>
+</li>
+<li><p>指令可以分为传送指令，如mov,push,pop,leal,in,out;定点算术运算指令，如add，sub，int,dec,neg,cmp;浮点运算指令等等。</p>
+</li>
+</ul>
+<h4 id="函数调用过程"><a href="#函数调用过程" class="headerlink" title="函数调用过程"></a>函数调用过程</h4><h5 id="一段c语言代码"><a href="#一段c语言代码" class="headerlink" title="一段c语言代码"></a>一段c语言代码</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x+y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t1 = <span class="number">125</span>;</span><br><span class="line">    <span class="keyword">int</span> t2 = <span class="number">80</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = add(t1,t2);</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="过程描述"><a href="#过程描述" class="headerlink" title="过程描述"></a>过程描述</h5><p>存放参数t1,t2;调出add执行，取出参数t1,t2,执行运算，保存返回结果，返回到main中。过程调用执行步骤（p为调用者，Q为被调用者）</p>
+<!-- ![函数调用](函数调用栈/pic8.png) -->
+<!-- ![结合机器指令的过程结构](函数调用栈/pic9.png) -->
+<div align="center">
+  <img src="/2019/09/18/函数调用栈/pic8.png" height="200px" width="400px">
+</div>
+<div align="center">
+  <img src="/2019/09/18/函数调用栈/pic9.png" height="200px" width="400px">
+</div>
+
+<h5 id="关于Q过程中的保存P的现场和恢复P的现场"><a href="#关于Q过程中的保存P的现场和恢复P的现场" class="headerlink" title="关于Q过程中的保存P的现场和恢复P的现场"></a>关于Q过程中的保存P的现场和恢复P的现场</h5><p>为什么要压入返回地址啊？返回地址是指被调用函数的下一条语句。ret指令会将返回地址送到eip寄存器，即指令指针。</p>
+<p>保存现场即保存寄存器，以便被调用者返回前恢复寄存器。<br>根据IA-32的寄存器使用约定：</p>
+<ul>
+<li><p>调用者保存寄存器：eax,edx,ecx<br>如果调用函数P调用完Q返回后，还需用到eax寄存器，则需要P在调用Q前保存。*一般而言P调用Q之后不需要用到eax寄存器，所以一般会将操作数优先存在eax，edx，ecx这类寄存器，以减少准备阶段和结束阶段的开销。</p>
+</li>
+<li><p>被调用者保存寄存器：ebx，esi，edi<br>如果被调用者Q需要用到ebx，则Q需要保存到栈中再使用。</p>
+</li>
+<li><p>ebp：帧指针寄存器，指向当前栈帧底部，高地址 esp：栈指针寄存器，指向当前栈帧顶部，低地址。如果以向上为高地址的话，栈就是个倒置的桶，栈帧底部abp描述的就是杯底，底部为高地址，没毛病。</p>
+</li>
+</ul>
+<h5 id="栈和栈帧的变化"><a href="#栈和栈帧的变化" class="headerlink" title="栈和栈帧的变化"></a>栈和栈帧的变化</h5><!-- ![函数调用栈的变化](函数调用栈/pic10.png) -->
+<div align="center">
+  <img src="/2019/09/18/函数调用栈/pic10.png" height="200px" width="400px">
+</div>
+
+<h5 id="相应的汇编指令"><a href="#相应的汇编指令" class="headerlink" title="相应的汇编指令"></a>相应的汇编指令</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x+y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">caller</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t1 = <span class="number">125</span>;</span><br><span class="line">    <span class="keyword">int</span> t2 = <span class="number">80</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = add(t1,t2);</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>汇编代码</th>
+<th align="center">操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pushl %ebp</td>
+<td align="center">将旧ebp地址压栈（以便回到原栈底），esp地址-4，指向下一个存储单元</td>
+</tr>
+<tr>
+<td>movl %esp,%ebp</td>
+<td align="center">将esp的值赋给ebp，ebp指向了当前栈帧的底部</td>
+</tr>
+<tr>
+<td>subl $24,%esp</td>
+<td align="center">把esp减去了24，开辟内存空间</td>
+</tr>
+<tr>
+<td>movl $125,-12(%ebp)</td>
+<td align="center">125送到ebp-12的位置</td>
+</tr>
+<tr>
+<td>movl $80,-8(%ebp)</td>
+<td align="center">80这个立即数送到ebp-8的位置</td>
+</tr>
+<tr>
+<td>movl -8(%ebp),%eax</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>movl %eax,4(%esp)</td>
+<td align="center">把ebp-8的数送到esp+4的位置，在对t2参数进行赋值</td>
+</tr>
+<tr>
+<td>movl -12(%ebp),%eax</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>movl %eax,(%esp)</td>
+<td align="center">同理，在进行t1参数的赋值</td>
+</tr>
+<tr>
+<td>call add</td>
+<td align="center">转入add函数体执行，同理第一二条指令是push ebp；mov esp,ebp形成add栈帧的底。return返回参数总是在eax中。call指令总会把下一条指令（movl %eax,-4(%ebp)）压入到栈中。add最后一条指令是ret指令，ret指令会将返回地址取出送到eip寄存器（指令指针）中。</td>
+</tr>
+<tr>
+<td>movl %eax,-4(%ebp)</td>
+<td align="center">将eax的值（即return的和）传送至ebp-4的位置</td>
+</tr>
+<tr>
+<td>movl -4(%ebp),%eax</td>
+<td align="center">把返回值sum再放入eax寄存器中</td>
+</tr>
+<tr>
+<td>leave</td>
+<td align="center">退栈，将ebp的内容传送到esp，将esp又指向了ebp；再执行pop指令，把esp指向的内容弹出到ebp内，恢复ebp的内容（ebp回到了p过程的栈底）。esp指向上一个单元，该单元存放的是返回地址。</td>
+</tr>
+<tr>
+<td>ret</td>
+<td align="center">return指令又可以返回到p（调用函数）中执行</td>
+</tr>
+</tbody></table>
+<!-- ![汇编指令](函数调用栈/pic11.png) -->
+
+<div align="center">
+  <img src="/2019/09/18/函数调用栈/pic11.png" height="200px" width="400px">
+</div>
+
+<p>准备参数入口，将值再复制了一遍是为什么？<br>假设回调函数为<code>swap(&amp;t1,&amp;t2)</code>,要改变局部变量的之前是不是得先存起来，不然令<code>t1=t2</code>,t1原来的值消失了怎么办，简单比喻一下。</p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/09/16/栈堆/" rel="next" title="栈堆">
+                  <i class="fa fa-chevron-left"></i> 栈堆
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.jpg"
+      alt="黄路遥">
+  <p class="site-author-name" itemprop="name">黄路遥</p>
+  <div class="site-description motion-element" itemprop="description">沉心静气，就地修仙</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/Amybiubiu" title="GitHub &rarr; https://github.com/Amybiubiu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:1246457100@qq.com" title="E-Mail &rarr; mailto:1246457100@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#不同语言之间的转换"><span class="nav-number">1.</span> <span class="nav-text">不同语言之间的转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#指令"><span class="nav-number">2.</span> <span class="nav-text">指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数调用过程"><span class="nav-number">3.</span> <span class="nav-text">函数调用过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一段c语言代码"><span class="nav-number">3.1.</span> <span class="nav-text">一段c语言代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#过程描述"><span class="nav-number">3.2.</span> <span class="nav-text">过程描述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#关于Q过程中的保存P的现场和恢复P的现场"><span class="nav-number">3.3.</span> <span class="nav-text">关于Q过程中的保存P的现场和恢复P的现场</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#栈和栈帧的变化"><span class="nav-number">3.4.</span> <span class="nav-text">栈和栈帧的变化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#相应的汇编指令"><span class="nav-number">3.5.</span> <span class="nav-text">相应的汇编指令</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">黄路遥</span>
+</div>
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
+-->
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        <span>0%</span>
+      </div>
+
+    
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script>
+<script src="/js/schemes/pisces.js?v=7.3.0"></script>
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script><script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'g5Cv5iAS2YGuFEIqYof6C3lB-gzGzoHsz',
+    appKey: 'S2eh3R9dYlx3m1EDnnpJmJXu',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: '' || 'zh-cn',
+    path: location.pathname
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>

@@ -281,8 +281,12 @@
                 
               
 
-              <time title="创建时间：2019-11-22 09:06:11" itemprop="dateCreated datePublished" datetime="2019-11-22T09:06:11+08:00">2019-11-22</time>
+              <time title="创建时间：2019-11-22 09:06:11 / 修改时间：14:30:20" itemprop="dateCreated datePublished" datetime="2019-11-22T09:06:11+08:00">2019-11-22</time>
             </span>
+          
+            
+
+            
           
 
           
@@ -318,7 +322,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
+          <h3 id="绑定规则"><a href="#绑定规则" class="headerlink" title="绑定规则"></a>绑定规则</h3><p>找到调用位置后，我们还需根据绑定规则确定 this 的绑定对象。</p><h4 id="默认绑定"><a href="#默认绑定" class="headerlink" title="默认绑定"></a>默认绑定</h4><p>最常用的函数调用类型：独立函数调用。无法应用其他规则的默认规则。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">foo(); <span class="comment">//2</span></span><br></pre></td></tr></table></figure><p>在代码中，foo() 是直接使用不带任何修饰的函数引用进行调用的，因此只能使用 默认绑定，无法应用其他规则。<br>如果使用严格模式(strict mode)，那么全局对象将无法使用默认绑定，因此 this 会绑定 到 undefined;严格模式下与 foo() 的调用位置无关:</p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/11/22/this/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>

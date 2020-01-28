@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+  <meta name="description" content="什么是异步12setTimeout(()=&amp;gt;&amp;#123;console.log(&quot;路&quot;)&amp;#125;,1000);console.log(&quot;遥&quot;); // 遥路在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在这个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS 异步">
+<meta property="og:url" content="http://yoursite.com/2020/01/23/JS-异步/index.html">
+<meta property="og:site_name" content="Luyao">
+<meta property="og:description" content="什么是异步12setTimeout(()=&amp;gt;&amp;#123;console.log(&quot;路&quot;)&amp;#125;,1000);console.log(&quot;遥&quot;); // 遥路在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在这个">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-28T14:14:06.199Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS 异步">
+<meta name="twitter:description" content="什么是异步12setTimeout(()=&amp;gt;&amp;#123;console.log(&quot;路&quot;)&amp;#125;,1000);console.log(&quot;遥&quot;); // 遥路在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在这个">
+  <link rel="canonical" href="http://yoursite.com/2020/01/23/JS-异步/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>JS 异步 | Luyao</title>
+  <meta name="generator" content="Hexo 3.9.0">
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Luyao</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-wrapper">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/23/JS-异步/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="黄路遥">
+      <meta itemprop="description" content="沉心静气，就地修仙">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luyao">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">JS 异步
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2020-01-23 19:58:33" itemprop="dateCreated datePublished" datetime="2020-01-23T19:58:33+08:00">2020-01-23</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-28 22:14:06" itemprop="dateModified" datetime="2020-01-28T22:14:06+08:00">2020-01-28</time>
+              </span>
+            
+          
+
+          
+            <span id="/2020/01/23/JS-异步/" class="post-meta-item leancloud_visitors" data-flag-title="JS 异步" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/01/23/JS-异步/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/23/JS-异步/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="什么是异步"><a href="#什么是异步" class="headerlink" title="什么是异步"></a>什么是异步</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;<span class="built_in">console</span>.log(<span class="string">"路"</span>)&#125;,<span class="number">1000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"遥"</span>); <span class="comment">// 遥路</span></span><br></pre></td></tr></table></figure><p>在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。<br>正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在这个程序 中引入了异步机制。</p><a id="more"></a>
+
+
+<h4 id="传统的实现异步的方式"><a href="#传统的实现异步的方式" class="headerlink" title="传统的实现异步的方式"></a>传统的实现异步的方式</h4><ul>
+<li>回调</li>
+<li><a href="https://www.ruanyifeng.com/blog/2012/12/asynchronous%EF%BC%BFjavascript.html" target="_blank" rel="noopener">其他</a></li>
+</ul>
+<p>为什么我们会需要使用异步，因为我们不想浏览器发生阻塞，想象我们手机卡住的场景，这简直难以忍受；但是通过回调引发的异步同样会引发新的问题（当然，这些问题与引起的阻塞相比都是小问题）。（其中影响最大的“信任问题”。）</p>
+<h4 id="回调引发的问题"><a href="#回调引发的问题" class="headerlink" title="回调引发的问题"></a>回调引发的问题</h4><h5 id="顺序问题-gt-追踪难度加大"><a href="#顺序问题-gt-追踪难度加大" class="headerlink" title="顺序问题-&gt;追踪难度加大"></a>顺序问题-&gt;追踪难度加大</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">doA(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        doC();</span><br><span class="line">        doD(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            doF();</span><br><span class="line">        &#125;);</span><br><span class="line">        doE();</span><br><span class="line">&#125;   );</span><br><span class="line">doB();</span><br></pre></td></tr></table></figure>
+
+<p>或许能够追踪到A → B → C → D → E → F这样的执行顺序，可是真正的异步实际情况会复杂很多。而且在某些情况下，doA顺序执行了，而在你的代码中，函数的执行结果很依赖于各个函数的执行顺序，这时候你很难追踪到是那个部分出了问题。当然也可以通过硬编码（调整函数代码块的位置和设置if语句）去排除这些问题，但是这样就将代码复杂化了。所以我们需要更好的异步模式。</p>
+<h5 id="信任问题"><a href="#信任问题" class="headerlink" title="信任问题"></a>信任问题</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//A</span></span><br><span class="line">ajax(<span class="string">".."</span>,<span class="function"><span class="keyword">function</span>(<span class="params">...</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//C</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//B</span></span><br></pre></td></tr></table></figure>
+
+<p>有时候 <code>ajax(..)</code>(也 就是你交付回调 continuation 的第三方)不是你编写的代码，也不在你的直接控制下。多数情况下，它是某个第三方提供的工具。我们把这称为控制反转(inversion of control)，也就是把自己程序一部分的执行控制交给某个第三方。(出现的不可信任的第三方)。<br>由于某些原因，c没有回调成功，执行ajax这个工具进行了会在五秒钟内每秒重试一次传入的回调函数，然后才会因超时而失败。之后这5个回调成功了，c被执行了5次。如果c是一个支付相关的，则用户会被扣款五次。当然这也可以通过设置if条件，防止第三方工具瞎搞。出了重复回调外，还会有其他问题</p>
+<ul>
+<li>调用回调过早(在追踪之前)</li>
+<li>调用回调过晚(或没有调用)</li>
+<li>调用回调的次数太少或太多(就像你遇到过的问题!)</li>
+<li>没有把所需的环境 / 参数成功传给你的回调函数</li>
+<li>吞掉可能出现的错误或异常</li>
+</ul>
+<p>为了解决这一系例隐患，我们不知道要增加多少工作量，所以我们迫切需要新的异步模式！</p>
+<h4 id="新的异步模式Promise"><a href="#新的异步模式Promise" class="headerlink" title="新的异步模式Promise"></a>新的异步模式Promise</h4><p>在 ES6 中，有一个新的概念建立在事件循环队列之上，叫作<strong>任务队列</strong>(job queue)。事件循环队列类似于一个游乐园游戏:玩过了一个游戏之后，你需要重新到队尾排队才能 再玩一次。而任务队列类似于玩过了游戏之后，插队接着继续玩。一个 Promise (p1)决议后，这个 Promise 上所有的通过 then(..) 注册的回调(cb1,cb2)都会在下一个异步时机点(p2 cb3)上依次被立即调用。这些回调中的任意一个(cb1)都无法影响或延误对其他回调(cb2)的调用。由Promise创建的then异步是基于任务的，而不像cb是基于事件的。</p>
+<h5 id="什么是Promise"><a href="#什么是Promise" class="headerlink" title="什么是Promise"></a>什么是Promise</h5><ul>
+<li>promise作为一个返回值</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//构造并返回一个promise</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(</span><br><span class="line">        <span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</span><br><span class="line">            <span class="comment">//promise的决议回调</span></span><br><span class="line">        &#125;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//new Promise( function(..)&#123; .. &#125; )模式</span></span><br><span class="line"><span class="comment">//？</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>promise事件</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//相比回调，实现了控制反转，bar不再通过foo的成功调用</span></span><br><span class="line"><span class="keyword">var</span> p = foo(<span class="number">2</span>);</span><br><span class="line">bar(p);</span><br><span class="line">baz(p);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">fooPromise</span>)</span>&#123;</span><br><span class="line">    fooPromise.then(</span><br><span class="line">        <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="comment">//foo success</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="comment">//foo err</span></span><br><span class="line">        &#125;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//baz 同</span></span><br></pre></td></tr></table></figure>
+
+<!-- 你肯定已经注意到 Promise 并没有完全摆脱回调。它们只是改变了传递回调的位置。我们并不是把回调传递给`foo(..)`，而是从`foo(..)`得到某个东西(外观上看是一个真正的 Promise)，然后把回调传给这个东西。
+但是，为什么这就比单纯使用回调更值得信任呢?`Promise.resolve()`的作用结果。 -->
+
+<h5 id="理解then-…"><a href="#理解then-…" class="headerlink" title="理解then(…)"></a>理解then(…)</h5><p>具有then（）函数的对象，都是promise吗？不是。普通then（）与promise产生的then的区别？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p = &#123;</span><br><span class="line">    then: <span class="function"><span class="keyword">function</span>(<span class="params">cb,errb</span>)</span>&#123;</span><br><span class="line">        cb(<span class="number">42</span>);</span><br><span class="line">        errb(<span class="string">"evil laugh"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">p.then(</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fulfilled</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(val); <span class="comment">//42</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">rejected</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err); <span class="comment">//evil laugh</span></span><br><span class="line">        <span class="comment">//如果是真正promise的then方法，这两个是不会都运行的</span></span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h5 id="Promise如何解决了之前的问题，你看出来了吗"><a href="#Promise如何解决了之前的问题，你看出来了吗" class="headerlink" title="Promise如何解决了之前的问题，你看出来了吗"></a>Promise如何解决了之前的问题，你看出来了吗</h5><p>关于<strong>信任问题</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Promise 构造器</span></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>( <span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</span><br><span class="line">    resolve(<span class="number">42</span>);</span><br><span class="line">    reject();</span><br><span class="line">&#125;)</span><br><span class="line">p.then(</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fulfill</span>(<span class="params">x1</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(x1);<span class="comment">//完成后 42</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">reject</span>(<span class="params">x2</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.err(x2);</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>回调未调用<br>reject事件<br>但如果Promise永远不被决议呢，Promise提供了解决方案，一种称为<em>竞态</em>的解决方案</p>
+</li>
+<li><p>调用次数过多或过少<br>由于 Promise 只能被决议一次，且决议后的结果不会被更改，所以任何通过 then(..) 注册的(每个)回调就只会被调用一次。如果你把同一个回调注册了不止一次(比如p.then(f); p.then(f);)，那它被调用的次数就会和注册次数相同</p>
+</li>
+<li><p>调用过晚<br>在下一个异步点之前一定会结束这个任务。</p>
+</li>
+<li><p>未能传递参数/环境值<br>依靠注册的回调传递</p>
+</li>
+<li><p>吞掉错误或异常<br>reject能捕捉到</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> <span class="built_in">Promise</span>( <span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</span><br><span class="line">    foo.bar(); <span class="comment">//foo undefined</span></span><br><span class="line">    resolve(<span class="number">42</span>);</span><br><span class="line">&#125; )</span><br><span class="line">p.then(</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fufilled</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="comment">//will not reach here</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">rejected</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// err将会是一个TypeError异常对象来自foo.bar()这一行</span></span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h5 id="如何将传统的回调异步转换为Promise异步模式"><a href="#如何将传统的回调异步转换为Promise异步模式" class="headerlink" title="如何将传统的回调异步转换为Promise异步模式"></a>如何将传统的回调异步转换为Promise异步模式</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//回调</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">getX,getY,cb</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x,y;</span><br><span class="line">    getX(<span class="function"><span class="keyword">function</span>(<span class="params">xval</span>)</span>&#123;</span><br><span class="line">        x = xval;</span><br><span class="line">        <span class="keyword">if</span>(y != <span class="literal">undefined</span>)&#123;</span><br><span class="line">            cb(x+y);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)<span class="comment">//这种写法？getX里面是一个函数？莫非是高阶函数？xval应该是fetchX的返回结果</span></span><br><span class="line">    getY(<span class="function"><span class="keyword">function</span>(<span class="params">yVal</span>)</span>&#123;</span><br><span class="line">        y =yVal;</span><br><span class="line">        <span class="keyword">if</span>(x != undifined)&#123;</span><br><span class="line">            cb( x+y);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">add(fetchX,fetchY,<span class="function"><span class="keyword">function</span>(<span class="params">sum</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>,log(sum);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//Promise模式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">xPromise,yPromise</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.all([xPromise,yPromise]).then(</span><br><span class="line">        <span class="function"><span class="keyword">function</span>(<span class="params">valus</span>)</span>&#123;</span><br><span class="line">            <span class="comment">//.then会返回一个promise,这个promise由return values[0] + values[1]这一 行立即决议(得到加运算的结果)</span></span><br><span class="line">            <span class="keyword">return</span> values[<span class="number">0</span>]+values[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//fulfill(values[0]+values[1]);</span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line">add( fetchX(),fetchY() )</span><br><span class="line">.then(</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">sum</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( sum );</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.error(err);</span><br><span class="line">    &#125;</span><br><span class="line">);</span><br><span class="line"><span class="comment">//通过Promise API学习使用</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Promise的不足"><a href="#Promise的不足" class="headerlink" title="Promise的不足"></a>Promise的不足</h4><p><strong>其一</strong><br>为了避免丢失被忽略和抛弃的 Promise 错误，一些开发者表示，Promise 链的一个最佳实践 就是最后总以一个 catch(..) 结束，比如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p = <span class="built_in">Promise</span>.resolve(<span class="number">42</span>);</span><br><span class="line">p.then(</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fufill</span>(<span class="params">msg</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// 数字没有string函数，所以会抛出错误</span></span><br><span class="line">        <span class="built_in">console</span>.log( msg.toLowerCase())</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br><span class="line">.catch( handleErrors);</span><br><span class="line"><span class="comment">//如果 handleErrors(..) 本身内部也有错误怎么办呢?谁来捕捉它?</span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/11/22/this/" rel="next" title="this">
+                  <i class="fa fa-chevron-left"></i> this
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="comments"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.jpg"
+      alt="黄路遥">
+  <p class="site-author-name" itemprop="name">黄路遥</p>
+  <div class="site-description motion-element" itemprop="description">沉心静气，就地修仙</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/Amybiubiu" title="GitHub &rarr; https://github.com/Amybiubiu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:1246457100@qq.com" title="E-Mail &rarr; mailto:1246457100@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是异步"><span class="nav-number">1.</span> <span class="nav-text">什么是异步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传统的实现异步的方式"><span class="nav-number">2.</span> <span class="nav-text">传统的实现异步的方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回调引发的问题"><span class="nav-number">3.</span> <span class="nav-text">回调引发的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#顺序问题-gt-追踪难度加大"><span class="nav-number">3.1.</span> <span class="nav-text">顺序问题-&gt;追踪难度加大</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#信任问题"><span class="nav-number">3.2.</span> <span class="nav-text">信任问题</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新的异步模式Promise"><span class="nav-number">4.</span> <span class="nav-text">新的异步模式Promise</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#什么是Promise"><span class="nav-number">4.1.</span> <span class="nav-text">什么是Promise</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#理解then-…"><span class="nav-number">4.2.</span> <span class="nav-text">理解then(…)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Promise如何解决了之前的问题，你看出来了吗"><span class="nav-number">4.3.</span> <span class="nav-text">Promise如何解决了之前的问题，你看出来了吗</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#如何将传统的回调异步转换为Promise异步模式"><span class="nav-number">4.4.</span> <span class="nav-text">如何将传统的回调异步转换为Promise异步模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Promise的不足"><span class="nav-number">5.</span> <span class="nav-text">Promise的不足</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">黄路遥</span>
+</div>
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
+-->
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        <span>0%</span>
+      </div>
+
+    
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.3.0"></script><script src="/js/motion.js?v=7.3.0"></script>
+<script src="/js/schemes/pisces.js?v=7.3.0"></script>
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.3.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script><script src="/js/post-details.js?v=7.3.0"></script>
+
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'g5Cv5iAS2YGuFEIqYof6C3lB-gzGzoHsz',
+    appKey: 'S2eh3R9dYlx3m1EDnnpJmJXu',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: '' || 'zh-cn',
+    path: location.pathname
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>

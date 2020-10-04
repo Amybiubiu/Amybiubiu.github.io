@@ -54,17 +54,17 @@
   };
 </script>
 
-  <meta name="description" content="沉心静气，就地修仙">
+  <meta name="description" content="useState和 react 的 this.state 是一个东西useEffect在 component.DidMount 和 componnet.DidUpdate 这两个生命周期内执行。如果在useEffect中有return的话，return部分在componnetWillUnmount阶段调用。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react hooks in practice">
 <meta property="og:url" content="http://yoursite.com/2020/09/28/react-hooks-in-practice/index.html">
 <meta property="og:site_name" content="Luyao">
-<meta property="og:description" content="沉心静气，就地修仙">
+<meta property="og:description" content="useState和 react 的 this.state 是一个东西useEffect在 component.DidMount 和 componnet.DidUpdate 这两个生命周期内执行。如果在useEffect中有return的话，return部分在componnetWillUnmount阶段调用。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-28T02:13:02.260Z">
+<meta property="og:updated_time" content="2020-10-04T08:23:55.955Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react hooks in practice">
-<meta name="twitter:description" content="沉心静气，就地修仙">
+<meta name="twitter:description" content="useState和 react 的 this.state 是一个东西useEffect在 component.DidMount 和 componnet.DidUpdate 这两个生命周期内执行。如果在useEffect中有return的话，return部分在componnetWillUnmount阶段调用。">
   <link rel="canonical" href="http://yoursite.com/2020/09/28/react-hooks-in-practice/">
 
 
@@ -285,6 +285,18 @@
               <time title="创建时间：2020-09-28 10:13:02" itemprop="dateCreated datePublished" datetime="2020-09-28T10:13:02+08:00">2020-09-28</time>
             </span>
           
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-04 16:23:55" itemprop="dateModified" datetime="2020-10-04T16:23:55+08:00">2020-10-04</time>
+              </span>
+            
+          
 
           
             <span id="/2020/09/28/react-hooks-in-practice/" class="post-meta-item leancloud_visitors" data-flag-title="react hooks in practice" title="阅读次数">
@@ -327,7 +339,33 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h3 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h3><p>和 react 的 this.state 是一个东西</p><h3 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h3><p>在 component.DidMount 和 componnet.DidUpdate 这两个生命周期内执行。如果在useEffect中有return的话，return部分在componnetWillUnmount阶段调用。</p><a id="more"></a>
+
+<p>关于 useEffect 第二个参数的三种情况：<br><a href="https://codesandbox.io/s/xenodochial-ritchie-z2zy1" target="_blank" rel="noopener">codesandbox</a></p>
+<ol>
+<li>不写。视情况而定，会发生语法报错，说：缺失依赖值，可能会导致对依赖的无限查找。不写就是默认对你所有用到的值变化的时候执行。</li>
+<li>空数组[]。当useEffect 中用到了依赖值，却设置了空依赖列表，会发生报错，强制忽略报错，可以用来阻止代码执行。</li>
+<li>正常情况下的所用值形成的依赖列表。</li>
+</ol>
+<p>useEffect 的应用：</p>
+<ol>
+<li>有些在浏览器中才能使用的，而在build阶段不可以使用的，比如 <code>localstorage</code>, react router中的<code>location.state.xxx</code>,这部分的代码可以写为 <code>useEffect(...some code...,[])</code></li>
+<li>结合 useRef 写一个自定义hook储存 previous state。（下文中的demo还显示了 useRef 和 组件外部变量的应用区别。）<br><a href="https://codesandbox.io/s/q-57444154-closures-forked-ys1ne?file=/src/App.react.js" target="_blank" rel="noopener">codesandbox</a></li>
+<li>设置定时器，对input输入内容的防抖。<br><a href="https://github.com/OI-wiki/gatsby-oi-wiki/blob/master/gatsby-theme-oi-wiki/src/components/Search.js#L223" target="_blank" rel="noopener">oi-wiki-search.js</a><br><a href="https://codesandbox.io/s/elegant-shockley-sg7lf" target="_blank" rel="noopener">codesandbox</a></li>
+</ol>
+<h3 id="useContext"><a href="#useContext" class="headerlink" title="useContext"></a>useContext</h3><p>当一个较深层次的子组件要使用父组件的一些值的时候，使用useContext可以避免props层层传递的累赘，而直接在context.provider包裹下的组件中，使用context.consumer或者useContext获取顶层父组件的值（provider value)，而不单单是上一层父组件的值。</p>
+<p>可以应用在主题和语言设置上。<br><a href="https://github.com/OI-wiki/gatsby-oi-wiki/blob/intl/src/languageContext.js" target="_blank" rel="noopener">intl context provider部分</a><br><a href="https://github.com/OI-wiki/gatsby-oi-wiki/blob/intl/src/components/NavAndDrawer.tsx#L78" target="_blank" rel="noopener">intl context consumer部分</a><br><a href="https://github.com/OI-wiki/gatsby-oi-wiki/blob/intl/src/components/Footer.js#L43" target="_blank" rel="noopener">intl useContext 部分</a></p>
+<p>或许可以考虑写一个单独demo出来？？</p>
+<h3 id="useCallback-、-useMemo-and-React-Memo"><a href="#useCallback-、-useMemo-and-React-Memo" class="headerlink" title="useCallback 、 useMemo and React.Memo"></a>useCallback 、 useMemo and React.Memo</h3><p>这三者都有很大的相似性。react 在对props进行相等性检查时，对于相同值但是代码来源不同的数组和对象的对比结果会为false，这就导致很多不必要的重计算和重渲染，这三个API都可以用来处理这个问题。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//相等性检查</span></span><br><span class="line"><span class="keyword">const</span> n1 = <span class="number">1</span></span><br><span class="line"><span class="keyword">const</span> n2 = <span class="number">1</span></span><br><span class="line">n1 === n2 <span class="comment">// true</span></span><br><span class="line"><span class="keyword">const</span> a1 = [<span class="number">1</span>]</span><br><span class="line"><span class="keyword">const</span> a2 = [<span class="number">1</span>]</span><br><span class="line">a1 === a2 <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>在下面这个<a href="https://codesandbox.io/s/festive-banach-4u054?file=/src/App.js" target="_blank" rel="noopener">demo</a>可以看到，options的值没有变化，可是由于js的工作机制，在上层组件（在demo中上层组件是App）发生更新时，每次传入 Apple 组件的参数，都被认为是新的，useEffect的回调函数进行了re-run，（re-render了吗？可由<a href="https://www.codebeast.dev/usestate-vs-useref-re-render-or-not/" target="_blank" rel="noopener">devtools监测</a>到HTML元素）,并且在codesandbox也可以看到(react-hooks/exhaustive-deps)eslint给出的使用useMemo的修改建议。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React,&#123;useEffect, useState&#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"./styles.css"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Apple = <span class="function">(<span class="params">&#123;time,count&#125;</span>) =&gt;</span> &#123;</span><br><span class="line"> <span class="keyword">const</span> options = &#123;time,count&#125;</span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`thers is <span class="subst">$&#123;options&#125;</span> apples`</span>)</span><br><span class="line">  &#125;,[options])</span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">    &lt;div&gt;apple&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">export default function App() &#123;</span></span><br><span class="line"><span class="regexp">  const [girl,setGirl] = useState(0)</span></span><br><span class="line"><span class="regexp">  const [count,setCount] = useState(0)</span></span><br><span class="line"><span class="regexp">  const [time,setTime] = useState(0)</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;div className="App"&gt;</span></span><br><span class="line"><span class="regexp">      &lt;h1 onClick=&#123;() =&gt; setGirl(girl+1)&#125;&gt;&#123;girl&#125;&lt;/</span>h1&gt;</span><br><span class="line">      &lt;h2&gt;Start editing to see some magic happen!&lt;/h2&gt;</span><br><span class="line">      &lt;Apple count=&#123;count&#125; time = &#123;time&#125; /&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>但是参看<a href="https://kentcdodds.com/blog/usememo-and-usecallback" target="_blank" rel="noopener">博客</a>，任何性能优化都具有代价，在进行使用前都应该测量一下，性能优化的代价是不是足以抵销重计算的时间。</p>
+<h3 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a>useRef</h3><p>useRef 会在每次渲染时返回同一个 ref 对象，并且变更 .current 属性的变化不会引发组件重新渲染。</p>
+<p>官方文档的应用示例：阻止input框不必要的rerender</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [value, setValue] = React.useState(<span class="string">""</span>);</span><br><span class="line">  <span class="keyword">const</span> valueRef = React.useRef();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> handleClick = <span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">    setValue(valueRef.current.value);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">      &lt;h4&gt;Value: &#123;value&#125;&lt;<span class="regexp">/h4&gt;</span></span><br><span class="line"><span class="regexp">      &lt;input ref=&#123;valueRef&#125; /</span>&gt;</span><br><span class="line">      &lt;Button onClick=&#123;handleClick&#125;&gt;Button&lt;<span class="regexp">/Button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -386,8 +424,17 @@
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -486,6 +533,23 @@
 
         </div>
       </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#useState"><span class="nav-number">1.</span> <span class="nav-text">useState</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#useEffect"><span class="nav-number">2.</span> <span class="nav-text">useEffect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#useContext"><span class="nav-number">3.</span> <span class="nav-text">useContext</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#useCallback-、-useMemo-and-React-Memo"><span class="nav-number">4.</span> <span class="nav-text">useCallback 、 useMemo and React.Memo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#useRef"><span class="nav-number">5.</span> <span class="nav-text">useRef</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
     </div>
   </aside>

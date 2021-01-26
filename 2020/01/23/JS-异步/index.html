@@ -54,18 +54,18 @@
   };
 </script>
 
-  <meta name="description" content="什么是异步12setTimeout(()=&amp;gt;&amp;#123;console.log(&quot;路&quot;)&amp;#125;,1000);console.log(&quot;遥&quot;); // 遥路  在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在">
+  <meta name="description" content="什么是异步12setTimeout(()=&amp;gt;&amp;#123;console.log(&quot;路&quot;)&amp;#125;,1000);console.log(&quot;遥&quot;); // 遥路在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在这个">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS 异步">
 <meta property="og:url" content="http://yoursite.com/2020/01/23/JS-异步/index.html">
 <meta property="og:site_name" content="Amybiubiu">
-<meta property="og:description" content="什么是异步12setTimeout(()=&amp;gt;&amp;#123;console.log(&quot;路&quot;)&amp;#125;,1000);console.log(&quot;遥&quot;); // 遥路  在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在">
+<meta property="og:description" content="什么是异步12setTimeout(()=&amp;gt;&amp;#123;console.log(&quot;路&quot;)&amp;#125;,1000);console.log(&quot;遥&quot;); // 遥路在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在这个">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2020-05-01T13:02:34.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS 异步">
-<meta name="twitter:description" content="什么是异步12setTimeout(()=&amp;gt;&amp;#123;console.log(&quot;路&quot;)&amp;#125;,1000);console.log(&quot;遥&quot;); // 遥路  在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在">
+<meta name="twitter:description" content="什么是异步12setTimeout(()=&amp;gt;&amp;#123;console.log(&quot;路&quot;)&amp;#125;,1000);console.log(&quot;遥&quot;); // 遥路在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在这个">
   <link rel="canonical" href="http://yoursite.com/2020/01/23/JS-异步/">
 
 
@@ -296,9 +296,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="什么是异步"><a href="#什么是异步" class="headerlink" title="什么是异步"></a>什么是异步</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;<span class="built_in">console</span>.log(<span class="string">"路"</span>)&#125;,<span class="number">1000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"遥"</span>); <span class="comment">// 遥路</span></span><br></pre></td></tr></table></figure>
+        <h4 id="什么是异步"><a href="#什么是异步" class="headerlink" title="什么是异步"></a>什么是异步</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;<span class="built_in">console</span>.log(<span class="string">"路"</span>)&#125;,<span class="number">1000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"遥"</span>); <span class="comment">// 遥路</span></span><br></pre></td></tr></table></figure><p>在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。<br>正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在这个程序 中引入了异步机制。</p><a id="more"></a>
 
-<p>在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。<br>正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在这个程序 中引入了异步机制。</p>
+
 <h4 id="传统的实现异步的方式"><a href="#传统的实现异步的方式" class="headerlink" title="传统的实现异步的方式"></a>传统的实现异步的方式</h4><ul>
 <li>回调</li>
 <li><a href="https://www.ruanyifeng.com/blog/2012/12/asynchronous%EF%BC%BFjavascript.html" target="_blank" rel="noopener">其他</a></li>

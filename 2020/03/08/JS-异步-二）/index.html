@@ -54,13 +54,13 @@
   };
 </script>
 
-  <meta name="description" content="事件循环和任务队列在 ES6 中，有一个新的概念建立在事件循环队列之上，叫作任务队列(job queue)。这个概念给大家带来的最大影响可能是 Promise 的异步特性(参见第 3 章). 事件循环队列类似于一个游乐园游戏:玩过了一个游戏之后，你需要重新到队尾排队才能 再玩一次。而任务队列类似于玩过了游戏之后，插队接着继续玩. 回调导致的信任问题 回调未调用 多次回调 吞掉错误或异常 等等  关">
+  <meta name="description" content="事件循环和任务队列在 ES6 中，有一个新的概念建立在事件循环队列之上，叫作任务队列(job queue)。这个概念给大家带来的最大影响可能是 Promise 的异步特性(参见第 3 章).事件循环队列类似于一个游乐园游戏:玩过了一个游戏之后，你需要重新到队尾排队才能 再玩一次。而任务队列类似于玩过了游戏之后，插队接着继续玩.">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS 异步(二）">
 <meta property="og:url" content="http://yoursite.com/2020/03/08/JS-异步-二）/index.html">
 <meta property="og:site_name" content="Amybiubiu">
-<meta property="og:description" content="事件循环和任务队列在 ES6 中，有一个新的概念建立在事件循环队列之上，叫作任务队列(job queue)。这个概念给大家带来的最大影响可能是 Promise 的异步特性(参见第 3 章). 事件循环队列类似于一个游乐园游戏:玩过了一个游戏之后，你需要重新到队尾排队才能 再玩一次。而任务队列类似于玩过了游戏之后，插队接着继续玩. 回调导致的信任问题 回调未调用 多次回调 吞掉错误或异常 等等  关">
+<meta property="og:description" content="事件循环和任务队列在 ES6 中，有一个新的概念建立在事件循环队列之上，叫作任务队列(job queue)。这个概念给大家带来的最大影响可能是 Promise 的异步特性(参见第 3 章).事件循环队列类似于一个游乐园游戏:玩过了一个游戏之后，你需要重新到队尾排队才能 再玩一次。而任务队列类似于玩过了游戏之后，插队接着继续玩.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2020/03/08/JS-异步-二）/eventLoop.png">
 <meta property="og:image" content="http://yoursite.com/2020/03/08/JS-异步-二）/asyncControl.png">
@@ -68,7 +68,7 @@
 <meta property="og:updated_time" content="2020-05-01T13:00:53.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS 异步(二）">
-<meta name="twitter:description" content="事件循环和任务队列在 ES6 中，有一个新的概念建立在事件循环队列之上，叫作任务队列(job queue)。这个概念给大家带来的最大影响可能是 Promise 的异步特性(参见第 3 章). 事件循环队列类似于一个游乐园游戏:玩过了一个游戏之后，你需要重新到队尾排队才能 再玩一次。而任务队列类似于玩过了游戏之后，插队接着继续玩. 回调导致的信任问题 回调未调用 多次回调 吞掉错误或异常 等等  关">
+<meta name="twitter:description" content="事件循环和任务队列在 ES6 中，有一个新的概念建立在事件循环队列之上，叫作任务队列(job queue)。这个概念给大家带来的最大影响可能是 Promise 的异步特性(参见第 3 章).事件循环队列类似于一个游乐园游戏:玩过了一个游戏之后，你需要重新到队尾排队才能 再玩一次。而任务队列类似于玩过了游戏之后，插队接着继续玩.">
 <meta name="twitter:image" content="http://yoursite.com/2020/03/08/JS-异步-二）/eventLoop.png">
   <link rel="canonical" href="http://yoursite.com/2020/03/08/JS-异步-二）/">
 
@@ -300,8 +300,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="事件循环和任务队列"><a href="#事件循环和任务队列" class="headerlink" title="事件循环和任务队列"></a>事件循环和任务队列</h3><p><img src="/2020/03/08/JS-异步-二）/eventLoop.png" alt="eventLoop"><br>在 ES6 中，有一个新的概念建立在事件循环队列之上，叫作任务队列(job queue)。这个<br>概念给大家带来的最大影响可能是 Promise 的异步特性(参见第 3 章).</p>
-<p>事件循环队列类似于一个游乐园游戏:玩过了一个游戏之后，你需要重新到队尾排队才能 再玩一次。而任务队列类似于玩过了游戏之后，插队接着继续玩.</p>
+        <h3 id="事件循环和任务队列"><a href="#事件循环和任务队列" class="headerlink" title="事件循环和任务队列"></a>事件循环和任务队列</h3><p><img src="/2020/03/08/JS-异步-二）/eventLoop.png" alt="eventLoop"><br>在 ES6 中，有一个新的概念建立在事件循环队列之上，叫作任务队列(job queue)。这个<br>概念给大家带来的最大影响可能是 Promise 的异步特性(参见第 3 章).</p><p>事件循环队列类似于一个游乐园游戏:玩过了一个游戏之后，你需要重新到队尾排队才能 再玩一次。而任务队列类似于玩过了游戏之后，插队接着继续玩.</p><a id="more"></a>
+
 <h3 id="回调导致的信任问题"><a href="#回调导致的信任问题" class="headerlink" title="回调导致的信任问题"></a>回调导致的信任问题</h3><ul>
 <li>回调未调用</li>
 <li>多次回调</li>

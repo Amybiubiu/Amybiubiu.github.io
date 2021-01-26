@@ -54,17 +54,17 @@
   };
 </script>
 
-  <meta name="description" content="useState和 react 的 this.state 是一个东西 useEffect在 component.DidMount 和 componnet.DidUpdate 这两个生命周期内执行。如果在useEffect中有return的话，return部分在componnetWillUnmount阶段调用。 关于 useEffect 第二个参数的三种情况：codesandbox  不写。视情况而">
+  <meta name="description" content="useState和 react 的 this.state 是一个东西useEffect在 component.DidMount 和 componnet.DidUpdate 这两个生命周期内执行。如果在useEffect中有return的话，return部分在componnetWillUnmount阶段调用。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react hooks in practice">
 <meta property="og:url" content="http://yoursite.com/2020/09/28/react-hooks-in-practice/index.html">
 <meta property="og:site_name" content="Amybiubiu">
-<meta property="og:description" content="useState和 react 的 this.state 是一个东西 useEffect在 component.DidMount 和 componnet.DidUpdate 这两个生命周期内执行。如果在useEffect中有return的话，return部分在componnetWillUnmount阶段调用。 关于 useEffect 第二个参数的三种情况：codesandbox  不写。视情况而">
+<meta property="og:description" content="useState和 react 的 this.state 是一个东西useEffect在 component.DidMount 和 componnet.DidUpdate 这两个生命周期内执行。如果在useEffect中有return的话，return部分在componnetWillUnmount阶段调用。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2020-10-04T08:23:55.955Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react hooks in practice">
-<meta name="twitter:description" content="useState和 react 的 this.state 是一个东西 useEffect在 component.DidMount 和 componnet.DidUpdate 这两个生命周期内执行。如果在useEffect中有return的话，return部分在componnetWillUnmount阶段调用。 关于 useEffect 第二个参数的三种情况：codesandbox  不写。视情况而">
+<meta name="twitter:description" content="useState和 react 的 this.state 是一个东西useEffect在 component.DidMount 和 componnet.DidUpdate 这两个生命周期内执行。如果在useEffect中有return的话，return部分在componnetWillUnmount阶段调用。">
   <link rel="canonical" href="http://yoursite.com/2020/09/28/react-hooks-in-practice/">
 
 
@@ -282,8 +282,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h3><p>和 react 的 this.state 是一个东西</p>
-<h3 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h3><p>在 component.DidMount 和 componnet.DidUpdate 这两个生命周期内执行。如果在useEffect中有return的话，return部分在componnetWillUnmount阶段调用。</p>
+        <h3 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h3><p>和 react 的 this.state 是一个东西</p><h3 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h3><p>在 component.DidMount 和 componnet.DidUpdate 这两个生命周期内执行。如果在useEffect中有return的话，return部分在componnetWillUnmount阶段调用。</p><a id="more"></a>
+
 <p>关于 useEffect 第二个参数的三种情况：<br><a href="https://codesandbox.io/s/xenodochial-ritchie-z2zy1" target="_blank" rel="noopener">codesandbox</a></p>
 <ol>
 <li>不写。视情况而定，会发生语法报错，说：缺失依赖值，可能会导致对依赖的无限查找。不写就是默认对你所有用到的值变化的时候执行。</li>

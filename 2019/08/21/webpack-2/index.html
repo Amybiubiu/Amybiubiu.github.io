@@ -43,7 +43,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -54,18 +54,18 @@
   };
 </script>
 
-  <meta name="description" content="开发环境 mode: &amp;#39;development&amp;#39;, devtool: &amp;#39;inline-source-map&amp;#39;,……plugins: [ 使用 source map ，准确地知道错误来自于哪个源文件， watch mode npm run watch 浏览器可自动更新 webpack-dev-server/webpack-dev-middleware">
+  <meta name="description" content="开发环境 mode: &amp;#39;development&amp;#39;, devtool: &amp;#39;inline-source-map&amp;#39;,……plugins: [  使用 source map ，准确地知道错误来自于哪个源文件，  watch mode  npm run watch 浏览器可自动更新  webpack-dev-server/webpack-dev-middleware  对se">
 <meta name="keywords" content="webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack-2">
 <meta property="og:url" content="http://yoursite.com/2019/08/21/webpack-2/index.html">
 <meta property="og:site_name" content="Amybiubiu">
-<meta property="og:description" content="开发环境 mode: &amp;#39;development&amp;#39;, devtool: &amp;#39;inline-source-map&amp;#39;,……plugins: [ 使用 source map ，准确地知道错误来自于哪个源文件， watch mode npm run watch 浏览器可自动更新 webpack-dev-server/webpack-dev-middleware">
+<meta property="og:description" content="开发环境 mode: &amp;#39;development&amp;#39;, devtool: &amp;#39;inline-source-map&amp;#39;,……plugins: [  使用 source map ，准确地知道错误来自于哪个源文件，  watch mode  npm run watch 浏览器可自动更新  webpack-dev-server/webpack-dev-middleware  对se">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2020-05-01T13:12:47.183Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack-2">
-<meta name="twitter:description" content="开发环境 mode: &amp;#39;development&amp;#39;, devtool: &amp;#39;inline-source-map&amp;#39;,……plugins: [ 使用 source map ，准确地知道错误来自于哪个源文件， watch mode npm run watch 浏览器可自动更新 webpack-dev-server/webpack-dev-middleware">
+<meta name="twitter:description" content="开发环境 mode: &amp;#39;development&amp;#39;, devtool: &amp;#39;inline-source-map&amp;#39;,……plugins: [  使用 source map ，准确地知道错误来自于哪个源文件，  watch mode  npm run watch 浏览器可自动更新  webpack-dev-server/webpack-dev-middleware  对se">
   <link rel="canonical" href="http://yoursite.com/2019/08/21/webpack-2/">
 
 
@@ -163,39 +163,6 @@
       
       
         
-        <li class="menu-item menu-item-about">
-      
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-tags">
-      
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-categories">
-      
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
-
-  </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-archives">
       
     
@@ -203,36 +170,9 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
-      <li class="menu-item menu-item-search">
-        <a href="javascript:;" class="popup-trigger">
-        
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-      </li>
-    
   </ul>
 
 </nav>
-  <div class="site-search">
-    <div class="popup search-popup">
-    <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-wrapper">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
-           placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result"></div>
-
-</div>
-<div class="search-pop-overlay"></div>
-
-  </div>
 </div>
     </header>
 
@@ -260,7 +200,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="黄路遥">
       <meta itemprop="description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -313,36 +253,6 @@
           
 
           
-            <span id="/2019/08/21/webpack-2/" class="post-meta-item leancloud_visitors" data-flag-title="webpack-2" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          
-            <span class="post-meta-item" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/08/21/webpack-2/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/08/21/webpack-2/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
 
         </div>
       </header>
@@ -356,15 +266,15 @@
         <h4 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a><a href="https://webpack.docschina.org/guides/development" target="_blank" rel="noopener">开发环境</a></h4><ul>
 <li><code>mode: &#39;development&#39;,</code></li>
 <li><code>devtool: &#39;inline-source-map&#39;,</code>……<code>plugins: [</code></li>
-</ul><p>使用 source map ，准确地知道错误来自于哪个源文件，</p><ul>
+</ul>
+<p>使用 source map ，准确地知道错误来自于哪个源文件，</p>
+<ul>
 <li>watch mode</li>
-</ul><p>npm run watch 浏览器可自动更新</p><ul>
+</ul>
+<p>npm run watch 浏览器可自动更新</p>
+<ul>
 <li>webpack-dev-server/webpack-dev-middleware</li>
-</ul><a id="more"></a>
-
-
-
-
+</ul>
 <p>对server.js文件进行配置，<code>npm start</code> 在3000端口运行<strong>此时dist文件夹不会有文件，而是生成在浏览器的缓存中。</strong></p>
 
     </div>
@@ -421,9 +331,6 @@
 
           </div>
           
-    
-    <div class="comments" id="comments"></div>
-  
 
         </div>
           
@@ -452,9 +359,6 @@
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image"
-      src="/images/avatar.jpg"
-      alt="黄路遥">
   <p class="site-author-name" itemprop="name">黄路遥</p>
   <div class="site-description motion-element" itemprop="description">今天敲代码了吗(´･･)ﾉ(._.`)</div>
 </div>
@@ -523,30 +427,6 @@
       </div>
     
   </nav>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/Amybiubiu" title="GitHub &rarr; https://github.com/Amybiubiu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-    
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="mailto:1246457100@qq.com" title="E-Mail &rarr; mailto:1246457100@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-    
-  </div>
 
 
 
@@ -587,33 +467,11 @@
   </span>
   <span class="author" itemprop="copyrightHolder">黄路遥</span>
 </div>
-<!--
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
--->
-
 
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-user"></i>
-    </span>
-    <span class="site-uv" title="总访客量">
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-    </span>
-  
-    <span class="post-meta-divider">|</span>
-  
-    <span class="post-meta-item-icon">
-      <i class="fa fa-eye"></i>
-    </span>
-    <span class="site-pv" title="总访问量">
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-    </span>
-  
-</div>
 
 
 
@@ -658,8 +516,6 @@
 
 
 
-  <script src="/js/local-search.js?v=7.3.0"></script>
-
 
 
 
@@ -683,31 +539,6 @@
   
   <script src="/js/scrollspy.js?v=7.3.0"></script><script src="/js/post-details.js?v=7.3.0"></script>
 
-
-
-<script>
-NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: false,
-    appId: 'g5Cv5iAS2YGuFEIqYof6C3lB-gzGzoHsz',
-    appKey: 'S2eh3R9dYlx3m1EDnnpJmJXu',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: true,
-    lang: '' || 'zh-cn',
-    path: location.pathname
-  });
-}, window.Valine);
-</script>
 
 </body>
 </html>

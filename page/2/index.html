@@ -43,7 +43,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -161,39 +161,6 @@
       
       
         
-        <li class="menu-item menu-item-about">
-      
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-tags">
-      
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-categories">
-      
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
-
-  </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-archives">
       
     
@@ -201,36 +168,9 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
-      <li class="menu-item menu-item-search">
-        <a href="javascript:;" class="popup-trigger">
-        
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-      </li>
-    
   </ul>
 
 </nav>
-  <div class="site-search">
-    <div class="popup search-popup">
-    <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-wrapper">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
-           placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result"></div>
-
-</div>
-<div class="search-pop-overlay"></div>
-
-  </div>
 </div>
     </header>
 
@@ -257,7 +197,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="黄路遥">
       <meta itemprop="description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -311,28 +251,6 @@
           
 
           
-            <span id="/2019/11/13/作用域/" class="post-meta-item leancloud_visitors" data-flag-title="作用域" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/11/13/作用域/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/11/13/作用域/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
 
         </div>
       </header>
@@ -344,15 +262,30 @@
 
       
           <h2 id="动态作用域与词法作用域"><a href="#动态作用域与词法作用域" class="headerlink" title="动态作用域与词法作用域"></a>动态作用域与词法作用域</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a );</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>; bar();</span><br><span class="line"><span class="comment">//什么状况，为什么是2，而不是undifined？啊，我知道了，上面那条是由于a=2留在原地等待执行，console执行在前，在此例中执行bar执行在后，不是说关注声明么，是的，关注声明只是让你找对容器，而容器里装什么与声明无关，所以并不矛盾。</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/11/13/作用域/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
+
+<p>如果在你看来，此处应该输出2（当然此处涉及到对于变量提升的理解），则说明你关注的是<code>foo()</code>的声明；如果你认为会输出3，则你关注的是函数的调用。借此例引出词法作用域和动态作用域的主要区别：</p>
+<p><strong>词法作用域是在写代码或者说定义时确定的，而动态作用域是在运行时确定 的。(this 也是!)词法作用域关注函数在何处声明，而动态作用域关注函数从何处调用。</strong></p>
+<p>如何理解运行时确定这个概念，<code>bar()</code>调用<code>foo()</code>,动态生成调用栈，基于调用栈生成作用域链，而不是基于代码中的作用域嵌套生成作用域链（词法作用域的做法）。</p>
+<p>对于变量的查找，js是遵循词法作用域的，并且现在的大多数语言都是遵循词法作用域的。为什么js不使用动态作用域？我觉得一方面是因为，静态的更好控制，动态的不好控制。javascript引擎会在在编译阶段进行数项性能的优化。其中一些优化依赖于能够根据代码的词法进行静态的分析，并预先确定所有变量和函数的定义位置，才能在执行过程中快速找到标识符。</p>
+<h3 id="作用域嵌套"><a href="#作用域嵌套" class="headerlink" title="作用域嵌套"></a>作用域嵌套</h3><p>当一个块或函数嵌套在另一个块或函数中时，就发生了作用域的嵌套。因此，在当前作用 域中无法找到某个变量时，引擎就会在外层嵌套的作用域中继续查找，直到找到该变量， 或抵达最外层的作用域(也就是全局作用域)为止。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//作用域嵌套实例</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log( a );</span><br><span class="line">    &#125;)()</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>; bar();<span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h3><p>函数作用域和全局作用域，都很好观察和理解。那什么是块级作用域？let 关键字可以将变量绑定到所在的任意作用域中（通常是{ .. }内部）。换句话说let为其声明的变量隐式地了所在的块作用域。同样的，const声明也可以创建块级作用域。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//隐式创建块作用域</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span>(foo)&#123;</span><br><span class="line">    <span class="keyword">let</span> bar = foo*<span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(bar);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(bar);</span><br><span class="line"><span class="comment">//2 referrence error</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//显示的创建块作用域</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span>(foo)&#123;</span><br><span class="line">   &#123; <span class="keyword">let</span> bar = foo*<span class="number">2</span>;</span><br><span class="line">     <span class="built_in">console</span>.log(bar);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(bar);</span><br><span class="line"><span class="comment">//2 referrence error</span></span><br></pre></td></tr></table></figure>
+
+<p>推荐使用显示创建块作用域。在这个例子中，我们在 if 声明内部显式地创建了一个块，如果需要对其进行重 构，整个块都可以被方便地移动而不会对外部 if 声明的位置和语义产生任何影响。</p>
+<h3 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例1</span></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="keyword">var</span> a=<span class="number">2</span>;<span class="comment">//undifined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//例2</span></span><br><span class="line">a=<span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//无关紧要的例3,非严格模式下的LSH查找，未查找到a的声明，会自动创建一个a的声明；</span></span><br><span class="line">a=<span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+
+<p>按照结果逆推，可以感觉到变量被声明到了顶部。实际上也是：引擎会在解释JavaScript代码之前首先对其进行编译。编译阶段中的一部分工作就是找到所有的声明，并用合适的作用域将它们关联起来。（所以函数声明也能被提升）值得注意的是：第一个定义声明是在编译阶段进行的。第二个赋值声明会被留在原地等待执行阶段。所以是undifinded。</p>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>闭包是基于词法作用域书写代码时所产生的自然结果，你甚至不需要为了利用它们而有意 识地创建闭包。闭包的创建和使用在你的代码中随处可见。你缺少的是根据你自己的意愿来识别、拥抱和影响闭包的思维环境。</p>
+<p>定义:<strong>当函数可以记住并访问所在的词法作用域时，就产生了闭包，即使函数是在当前词法作用域之外执行。</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;;</span><br><span class="line">    bar();</span><br><span class="line">&#125;</span><br><span class="line">foo(); <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+
+<p>技术上来讲，也许是。但根据前面的定义，确切地说并不是。我<br>认为最准确地用来解释 bar() 对 a 的引用的方法是词法作用域的查找规则，而这些规则只是闭包的一部分。(但却 是非常重要的一部分!)函数 bar() 具有一个涵盖 foo() 作用域的闭包。但是通过这种方式定义的闭包并不能直接进行观察，也无法明白在这个代码片段中闭包是 如何工作的。我们可以很容易地理解词法作用域，而闭包则隐藏在代码之后的神秘阴影 里，并不那么容易理解。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> bar;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> baz = foo();    <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+
+<p>函数 bar() 的词法作用域能够访问 foo() 的内部作用域。然后我们将 bar() 函数本身当作 一个值类型进行传递。在这个例子中，我们将 bar 所引用的函数对象本身当作返回值。<br>在 foo() 执行后，其返回值(也就是内部的 bar() 函数)赋值给变量 baz 并调用 baz()，实 际上只是通过不同的标识符引用调用了内部的函数 bar()。<br>bar() 显然可以被正常执行。但是在这个例子中，它在自己定义的词法作用域以外的地方执行。<br>在 foo() 执行后，通常会期待 foo() 的整个内部作用域都被销毁，因为我们知道引擎有垃 圾回收器用来释放不再使用的内存空间。由于看上去 foo() 的内容不会再被使用，所以很 自然地会考虑对其进行回收。<em>上一个作用域嵌套实现的闭包，foo()的内部作用域会被销毁</em><br><strong>而闭包的“神奇”之处正是可以阻止这件事情的发生。事实上内部作用域依然存在，因此 没有被回收。谁在使用这个内部作用域?原来是 bar() 本身在使用。</strong><br>拜 bar() 所声明的位置所赐，它拥有涵盖 foo() 内部作用域的闭包，使得该作用域能够一 直存活，以供 bar() 在之后任何时间进行引用。<br>bar() 依然持有对该作用域的引用，而这个引用就叫作闭包。</p>
+
         
       
     </div>
@@ -383,7 +316,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="黄路遥">
       <meta itemprop="description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -424,28 +357,6 @@
           
 
           
-            <span id="/2019/09/18/函数调用栈/" class="post-meta-item leancloud_visitors" data-flag-title="函数调用栈" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/18/函数调用栈/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/18/函数调用栈/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
 
         </div>
       </header>
@@ -477,15 +388,128 @@
 
 </li>
 </ul>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/09/18/函数调用栈/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
+<h4 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h4><ul>
+<li><p>计算机的指令有微指令、机器指令和伪指令之分。汇编指令是机器指令的符号表示，以帮助记忆，可以称之为助记符。机器指令和汇编指令是一一对应的，都是机器级指令。</p>
+</li>
+<li><p>机器指令对源操作数进行操作，操作结果储存到目的操作数中。操作码：操作性质；立即数：操作数在指令中给出，这个数叫做立即数。找到操作数或操作数的地址这个过程叫寻址，操作数在不同的位置，有不同的<a href="https://www.icourse163.org/learn/NJU-1001625001#/learn/content?type=detail&id=1211390571&cid=1214042296" target="_blank" rel="noopener">寻址方式</a>。</p>
+<!-- ![机器指令](函数调用栈/pic4.png) -->
+<!-- ![汇编指令](函数调用栈/pic5.png) -->
+<div align="center">
+<img src="/2019/09/18/函数调用栈/pic4.png" height="100px" width="400px">
+</div>
+<div align="center">
+<img src="/2019/09/18/函数调用栈/pic5.png" height="100px" width="400px">
+</div>
+将cl寄存器中的内容传送到该地址的存储单元中。
+<!-- ![指令功能](函数调用栈/pic6.png) -->
+<div align="center">
+<img src="/2019/09/18/函数调用栈/pic6.png" height="100px" width="400px">
+</div>
+</li>
+<li><p>指令可以分为传送指令，如mov,push,pop,leal,in,out;定点算术运算指令，如add，sub，int,dec,neg,cmp;浮点运算指令等等。</p>
+</li>
+</ul>
+<h4 id="函数调用过程"><a href="#函数调用过程" class="headerlink" title="函数调用过程"></a>函数调用过程</h4><h5 id="一段c语言代码"><a href="#一段c语言代码" class="headerlink" title="一段c语言代码"></a>一段c语言代码</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x+y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t1 = <span class="number">125</span>;</span><br><span class="line">    <span class="keyword">int</span> t2 = <span class="number">80</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = add(t1,t2);</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="过程描述"><a href="#过程描述" class="headerlink" title="过程描述"></a>过程描述</h5><p>存放参数t1,t2;调出add执行，取出参数t1,t2,执行运算，保存返回结果，返回到main中。过程调用执行步骤（p为调用者，Q为被调用者）</p>
+<!-- ![函数调用](函数调用栈/pic8.png) -->
+<!-- ![结合机器指令的过程结构](函数调用栈/pic9.png) -->
+<div align="center">
+  <img src="/2019/09/18/函数调用栈/pic8.png" height="200px" width="400px">
+</div>
+<div align="center">
+  <img src="/2019/09/18/函数调用栈/pic9.png" height="200px" width="400px">
+</div>
+
+<h5 id="关于Q过程中的保存P的现场和恢复P的现场"><a href="#关于Q过程中的保存P的现场和恢复P的现场" class="headerlink" title="关于Q过程中的保存P的现场和恢复P的现场"></a>关于Q过程中的保存P的现场和恢复P的现场</h5><p>为什么要压入返回地址啊？返回地址是指被调用函数的下一条语句。ret指令会将返回地址送到eip寄存器，即指令指针。</p>
+<p>保存现场即保存寄存器，以便被调用者返回前恢复寄存器。<br>根据IA-32的寄存器使用约定：</p>
+<ul>
+<li><p>调用者保存寄存器：eax,edx,ecx<br>如果调用函数P调用完Q返回后，还需用到eax寄存器，则需要P在调用Q前保存。*一般而言P调用Q之后不需要用到eax寄存器，所以一般会将操作数优先存在eax，edx，ecx这类寄存器，以减少准备阶段和结束阶段的开销。</p>
+</li>
+<li><p>被调用者保存寄存器：ebx，esi，edi<br>如果被调用者Q需要用到ebx，则Q需要保存到栈中再使用。</p>
+</li>
+<li><p>ebp：帧指针寄存器，指向当前栈帧底部，高地址 esp：栈指针寄存器，指向当前栈帧顶部，低地址。如果以向上为高地址的话，栈就是个倒置的桶，栈帧底部abp描述的就是杯底，底部为高地址，没毛病。</p>
+</li>
+</ul>
+<h5 id="栈和栈帧的变化"><a href="#栈和栈帧的变化" class="headerlink" title="栈和栈帧的变化"></a>栈和栈帧的变化</h5><!-- ![函数调用栈的变化](函数调用栈/pic10.png) -->
+<div align="center">
+  <img src="/2019/09/18/函数调用栈/pic10.png" height="200px" width="400px">
+</div>
+
+<h5 id="相应的汇编指令"><a href="#相应的汇编指令" class="headerlink" title="相应的汇编指令"></a>相应的汇编指令</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x+y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">caller</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t1 = <span class="number">125</span>;</span><br><span class="line">    <span class="keyword">int</span> t2 = <span class="number">80</span>;</span><br><span class="line">    <span class="keyword">int</span> sum = add(t1,t2);</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>汇编代码</th>
+<th align="center">操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>pushl %ebp</td>
+<td align="center">将旧ebp地址压栈（以便回到原栈底），esp地址-4，指向下一个存储单元</td>
+</tr>
+<tr>
+<td>movl %esp,%ebp</td>
+<td align="center">将esp的值赋给ebp，ebp指向了当前栈帧的底部</td>
+</tr>
+<tr>
+<td>subl $24,%esp</td>
+<td align="center">把esp减去了24，开辟内存空间</td>
+</tr>
+<tr>
+<td>movl $125,-12(%ebp)</td>
+<td align="center">125送到ebp-12的位置</td>
+</tr>
+<tr>
+<td>movl $80,-8(%ebp)</td>
+<td align="center">80这个立即数送到ebp-8的位置</td>
+</tr>
+<tr>
+<td>movl -8(%ebp),%eax</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>movl %eax,4(%esp)</td>
+<td align="center">把ebp-8的数送到esp+4的位置，在对t2参数进行赋值</td>
+</tr>
+<tr>
+<td>movl -12(%ebp),%eax</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>movl %eax,(%esp)</td>
+<td align="center">同理，在进行t1参数的赋值</td>
+</tr>
+<tr>
+<td>call add</td>
+<td align="center">转入add函数体执行，同理第一二条指令是push ebp；mov esp,ebp形成add栈帧的底。return返回参数总是在eax中。call指令总会把下一条指令（movl %eax,-4(%ebp)）压入到栈中。add最后一条指令是ret指令，ret指令会将返回地址取出送到eip寄存器（指令指针）中。</td>
+</tr>
+<tr>
+<td>movl %eax,-4(%ebp)</td>
+<td align="center">将eax的值（即return的和）传送至ebp-4的位置</td>
+</tr>
+<tr>
+<td>movl -4(%ebp),%eax</td>
+<td align="center">把返回值sum再放入eax寄存器中</td>
+</tr>
+<tr>
+<td>leave</td>
+<td align="center">退栈，将ebp的内容传送到esp，将esp又指向了ebp；再执行pop指令，把esp指向的内容弹出到ebp内，恢复ebp的内容（ebp回到了p过程的栈底）。esp指向上一个单元，该单元存放的是返回地址。</td>
+</tr>
+<tr>
+<td>ret</td>
+<td align="center">return指令又可以返回到p（调用函数）中执行</td>
+</tr>
+</tbody></table>
+<!-- ![汇编指令](函数调用栈/pic11.png) -->
+
+<div align="center">
+  <img src="/2019/09/18/函数调用栈/pic11.png" height="200px" width="400px">
+</div>
+
+<p>准备参数入口，将值再复制了一遍是为什么？<br>假设回调函数为<code>swap(&amp;t1,&amp;t2)</code>,要改变局部变量的之前是不是得先存起来，不然令<code>t1=t2</code>,t1原来的值消失了怎么办，简单比喻一下。</p>
+
         
       
     </div>
@@ -516,7 +540,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="黄路遥">
       <meta itemprop="description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -557,28 +581,6 @@
           
 
           
-            <span id="/2019/09/16/栈堆/" class="post-meta-item leancloud_visitors" data-flag-title="栈堆" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/16/栈堆/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/16/栈堆/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
 
         </div>
       </header>
@@ -592,7 +594,8 @@
           <h3 id="数据结构的栈和堆"><a href="#数据结构的栈和堆" class="headerlink" title="数据结构的栈和堆"></a>数据结构的栈和堆</h3><ul>
 <li>栈：只能在表的一端进行插入和删除的线性表。具有先进后出的性质，可以理解为装数据的桶。</li>
 <li>堆：经过排序的树形数据结构。</li>
-</ul><h3 id="内存分配的栈和堆（以c-编译程序为例）"><a href="#内存分配的栈和堆（以c-编译程序为例）" class="headerlink" title="内存分配的栈和堆（以c++编译程序为例）"></a>内存分配的栈和堆（以c++编译程序为例）</h3><h4 id="存放区域"><a href="#存放区域" class="headerlink" title="存放区域"></a>存放区域</h4><table>
+</ul>
+<h3 id="内存分配的栈和堆（以c-编译程序为例）"><a href="#内存分配的栈和堆（以c-编译程序为例）" class="headerlink" title="内存分配的栈和堆（以c++编译程序为例）"></a>内存分配的栈和堆（以c++编译程序为例）</h3><h4 id="存放区域"><a href="#存放区域" class="headerlink" title="存放区域"></a>存放区域</h4><table>
 <thead>
 <tr>
 <th>区域</th>
@@ -620,15 +623,22 @@
 <td align="center">存放函数体的二进制代码</td>
 </tr>
 </tbody></table>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/09/16/栈堆/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
+<h4 id="没有手动释放堆区的情况"><a href="#没有手动释放堆区的情况" class="headerlink" title="没有手动释放堆区的情况"></a>没有手动释放堆区的情况</h4><p>1 从C语言本身设计来说，不会释放。<br>所谓动态内存，是由malloc系列函数进行申请的内存，除非在程序中使用free释放，否则该段内存不会被释放掉。<br>从这个角度来说，即使进程结束，该段内存也会被占用。这种现象被称为内存泄露。<br>2 大多数操作系统可以智能释放。<br>动态内存由于是进程使用，向操作系统控制方申请的内存，所以操作系统内核可以记录哪些内存由哪个进程使用，这样为了减少内存泄露的危害，操作系统内核均实现了在进程退出后，进程分配的自用内存自动回收的机制。</p>
+<p><img src="/2019/09/16/栈堆/stack1.jpeg" alt="图片"></p>
+<h4 id="来看一个例子"><a href="#来看一个例子" class="headerlink" title="来看一个例子"></a>来看一个例子</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//main.cpp</span></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>;<span class="comment">//全局初始化区</span></span><br><span class="line"><span class="keyword">char</span> *p1;<span class="comment">//全局未初始化区，p1是以地址为数据么？</span></span><br><span class="line">main()&#123;</span><br><span class="line">    <span class="keyword">int</span> b;<span class="comment">//栈</span></span><br><span class="line">    <span class="keyword">char</span> s[] = <span class="string">"abc"</span>;<span class="comment">//栈 “abc”也是在栈区么？还是在常量区？与p3的区别？数组在定义初始化的时候就在栈区开辟了一段连续的内存空间</span></span><br><span class="line">    <span class="keyword">char</span> *p2 ;<span class="comment">//栈</span></span><br><span class="line">    <span class="keyword">char</span> *p3 = <span class="string">"123456"</span>;<span class="comment">//p3在栈区；"12345\0"在常量区，为什么不在堆区？因为没有申请储存空间，只能存放在常量区</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> c =<span class="number">0</span>;</span><br><span class="line">    p1 = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(<span class="number">10</span>);</span><br><span class="line">    p2 = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(<span class="number">20</span>);<span class="comment">//分配得来得10和20字节的区域就在堆区。</span></span><br><span class="line">    <span class="built_in">strcpy</span>(p1,<span class="string">"123456"</span>);<span class="comment">//123456\0放在常量区。编译器可能会将它与p3所指向的"123456"优化成一个地方</span></span><br><span class="line">    <span class="built_in">strcpy</span>(p2,<span class="string">"abcdef"</span>);<span class="comment">//把常量区的"abcdef"拷贝一份到申请的堆区</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="申请后系统的响应"><a href="#申请后系统的响应" class="headerlink" title="申请后系统的响应"></a>申请后系统的响应</h4><ul>
+<li>栈：仅仅要栈的剩余空间大于所申请空间，系统将为程序提供内存，否则将报异常提示栈溢出。</li>
+<li>堆：首先应该知道操作系统有一个记录空暇内存地址的链表，当系统收到程序的申请时，会遍历该链表，寻找第一个空间大于所申请空间的堆结点，然后将该结点从空暇结点链表中删除，并将该结点的空间分配给程序，另外，对于大多数系统，会在这块内存空间中的首地址处记录本次分配的大小，这样。代码中的delete语句才干正确的释放本内存空间。所以堆是不连续的内存区域。<br>（<em>栈区和全局区的内存分布也不是连续的</em>）</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> g1=<span class="number">0</span>, g2=<span class="number">0</span>, g3=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> s1=<span class="number">0</span>, s2=<span class="number">0</span>, s3=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> v1=<span class="number">0</span>, v2=<span class="number">0</span>, v3=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">//打印出各个变量的内存地址</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"0x%08x\n"</span>,&amp;v1);<span class="comment">//打印各本地变量的内存地址</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"0x%08x\n"</span>,&amp;v2);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"0x%08x\n\n"</span>,&amp;v3);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"0x%08x\n"</span>,&amp;g1); <span class="comment">//打印各全局变量的内存地址</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"0x%08x\n"</span>,&amp;g2);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"0x%08x\n\n"</span>,&amp;g3);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"0x%08x\n"</span>,&amp;s1); <span class="comment">//打印各静态变量的内存地址</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"0x%08x\n"</span>,&amp;s2);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"0x%08x\n\n"</span>,&amp;s3);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另外。因为找到的堆结点的大小不一定正好等于申请的大小。系统会自己主动的将多余的那部分又一次放入空暇链表中。</p>
+<h4 id="能够申请的内存大小"><a href="#能够申请的内存大小" class="headerlink" title="能够申请的内存大小"></a>能够申请的内存大小</h4><ul>
+<li>栈：在Windows下,栈是向低地址扩展的数据结构。是一块连续的内存的区域栈顶的地址和栈的最大容量是系统预先规定好的。</li>
+<li>堆：堆是向高地址扩展的数据结构，是不连续的内存区域。堆的大小受限于计算机系统中有效的虚拟内存。</li>
+</ul>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a><a href="https://www.cnblogs.com/jzssuanfa/p/7068147.html" target="_blank" rel="noopener">参考链接</a></h3>
         
       
     </div>
@@ -659,7 +669,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="黄路遥">
       <meta itemprop="description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -688,28 +698,6 @@
           
 
           
-            <span id="/2019/08/21/hello-world/" class="post-meta-item leancloud_visitors" data-flag-title="Hello World" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/08/21/hello-world/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/08/21/hello-world/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
 
         </div>
       </header>
@@ -760,7 +748,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="黄路遥">
       <meta itemprop="description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -814,28 +802,6 @@
           
 
           
-            <span id="/2019/08/21/webpack-2/" class="post-meta-item leancloud_visitors" data-flag-title="webpack-2" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/08/21/webpack-2/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/08/21/webpack-2/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
 
         </div>
       </header>
@@ -849,20 +815,17 @@
           <h4 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a><a href="https://webpack.docschina.org/guides/development" target="_blank" rel="noopener">开发环境</a></h4><ul>
 <li><code>mode: &#39;development&#39;,</code></li>
 <li><code>devtool: &#39;inline-source-map&#39;,</code>……<code>plugins: [</code></li>
-</ul><p>使用 source map ，准确地知道错误来自于哪个源文件，</p><ul>
+</ul>
+<p>使用 source map ，准确地知道错误来自于哪个源文件，</p>
+<ul>
 <li>watch mode</li>
-</ul><p>npm run watch 浏览器可自动更新</p><ul>
+</ul>
+<p>npm run watch 浏览器可自动更新</p>
+<ul>
 <li>webpack-dev-server/webpack-dev-middleware</li>
 </ul>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/08/21/webpack-2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
+<p>对server.js文件进行配置，<code>npm start</code> 在3000端口运行<strong>此时dist文件夹不会有文件，而是生成在浏览器的缓存中。</strong></p>
+
         
       
     </div>
@@ -893,7 +856,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="黄路遥">
       <meta itemprop="description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -947,28 +910,6 @@
           
 
           
-            <span id="/2019/08/08/webpack学习笔记/" class="post-meta-item leancloud_visitors" data-flag-title="webpack学习笔记" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/08/08/webpack学习笔记/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/08/08/webpack学习笔记/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
 
         </div>
       </header>
@@ -979,20 +920,83 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>[TOC]</p><h4 id="看懂webpack-config-js"><a href="#看懂webpack-config-js" class="headerlink" title="看懂webpack.config.js"></a><a href="https://webpack.docschina.org/concepts" target="_blank" rel="noopener">看懂webpack.config.js</a></h4><ol>
+          <p>[TOC]</p>
+<h4 id="看懂webpack-config-js"><a href="#看懂webpack-config-js" class="headerlink" title="看懂webpack.config.js"></a><a href="https://webpack.docschina.org/concepts" target="_blank" rel="noopener">看懂webpack.config.js</a></h4><ol>
 <li>entry</li>
-</ol><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports=&#123;</span><br><span class="line">    entry:<span class="string">'./path/to/my/entry/file.js'</span></span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure><p>默认值是./src/index.js;入口起点</p><ol start="2">
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports=&#123;</span><br><span class="line">    entry:<span class="string">'./path/to/my/entry/file.js'</span></span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure>
+
+<p>默认值是./src/index.js;入口起点</p>
+<ol start="2">
 <li>output</li>
-</ol><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'./path/to/my/entry/file.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">    filename: <span class="string">'my-first-webpack.bundle.js'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/08/08/webpack学习笔记/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  entry: <span class="string">'./path/to/my/entry/file.js'</span>,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">    filename: <span class="string">'my-first-webpack.bundle.js'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>path定义导入的模块，filename指bunble生成的名件名称及地址。输出文件默认放入<code>./dist</code>文件夹中</p>
+<ol start="3">
+<li>loader</li>
+</ol>
+<p><em>loader 能够<code>import</code>任何类型的模块，例如<code>css</code>。</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: <span class="string">'my-first-webpack.bundle.js'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123; <span class="attr">test</span>: <span class="regexp">/\.txt$/</span>, <span class="attr">use</span>: <span class="string">'raw-loader'</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>“嘿，webpack 编译器，当你碰到「在 require()/import 语句中被解析为   ‘.txt’ 的路径」时，在你对它打包之前，先 &gt;使用 raw-loader 转换一下。”</p>
+</blockquote>
+<ol start="4">
+<li>plugin</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>); <span class="comment">// 通过 npm 安装</span></span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>); <span class="comment">// 用于访问内置插件</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123; <span class="attr">test</span>: <span class="regexp">/\.txt$/</span>, <span class="attr">use</span>: <span class="string">'raw-loader'</span> &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;<span class="attr">template</span>: <span class="string">'./src/index.html'</span>&#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>该插件为应用程序生成html文件，并注入所有生成的bundle。</p>
+<h4 id="资源管理"><a href="#资源管理" class="headerlink" title="资源管理"></a><a href="https://webpack.docschina.org/guides/asset-management" target="_blank" rel="noopener">资源管理</a></h4><p>以<strong>加载images图像</strong>为例</p>
+<ul>
+<li><p><code>npm install --save-dev file-loader</code></p>
+</li>
+<li><p>webpack.config</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  ....</span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.(png|svg|jpg|gif)$/</span>,</span><br><span class="line">        use: [</span><br><span class="line">          <span class="string">'file-loader'</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>src/icon.jpg</li>
+<li>src/index.js</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> _ <span class="keyword">from</span> <span class="string">'lodash'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'./style.css'</span>;</span><br><span class="line"><span class="keyword">import</span> Icon <span class="keyword">from</span> <span class="string">'./icon.png'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">component</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> element = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// lodash，现在由此脚本导入</span></span><br><span class="line">  element.innerHTML = _.join([<span class="string">'Hello'</span>, <span class="string">'webpack'</span>], <span class="string">' '</span>);</span><br><span class="line">  element.classList.add(<span class="string">'hello'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> myIcon = <span class="keyword">new</span> Image();</span><br><span class="line">  myIcon.src = Icon;</span><br><span class="line">  element.appendChild(myIcon);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>src/style.css</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.hello&#123;</span><br><span class="line">  background: url(<span class="string">'./icon.png'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>npm run build</code></li>
+</ul>
+<p><em>其他加载，css，fonts，data。</em></p>
+<h4 id="管理输出"><a href="#管理输出" class="headerlink" title="管理输出"></a><a href="https://webpack.docschina.org/guides/output-management/" target="_blank" rel="noopener">管理输出</a></h4><blockquote>
+<p>以下插件/操作均为方便管理dist文件夹，不需要手动更改</p>
+</blockquote>
+<ul>
+<li>动态生成bunble.js文件</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">module</span>.exports = &#123;</span><br><span class="line">-   entry: <span class="string">'./src/index.js'</span>,</span><br><span class="line">+   entry: &#123;</span><br><span class="line">+     app: <span class="string">'./src/index.js'</span>,</span><br><span class="line">+     print: <span class="string">'./src/print.js'</span></span><br><span class="line">+   &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">-     filename: <span class="string">'bundle.js'</span>,</span><br><span class="line">+     filename: <span class="string">'[name].bundle.js'</span>,</span><br><span class="line">      path: path.resolve(__dirname, <span class="string">'dist'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>npm install --save-dev html-webpack-plugin</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line">+ <span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">      app: <span class="string">'./src/index.js'</span>,</span><br><span class="line">      print: <span class="string">'./src/print.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">+   plugins: [</span><br><span class="line">+     <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">+       title: <span class="string">'管理输出'</span></span><br><span class="line">+     &#125;)</span><br><span class="line">+   ],</span><br><span class="line">    output: &#123;</span><br><span class="line">      filename: <span class="string">'[name].bundle.js'</span>,</span><br><span class="line">      path: path.resolve(__dirname, <span class="string">'dist'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>执行<code>npm run build</code>该插件会默认生成<code>index.html</code>文件，覆盖/更改原<code>index.html</code>文件</p>
+<ul>
+<li><code>npm install --save-dev clean-webpack-plugin</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+ <span class="keyword">const</span> CleanWebpackPlugin = <span class="built_in">require</span>(<span class="string">'clean-webpack-plugin'</span>);<span class="comment">//需改为&#123;CleanWebpackPlugin&#125;,否则会有报错</span></span><br><span class="line"></span><br><span class="line">....</span><br><span class="line"></span><br><span class="line"> plugins: [</span><br><span class="line">+     <span class="keyword">new</span> CleanWebpackPlugin(),</span><br></pre></td></tr></table></figure>
+
+<p>作用为清理dist文件夹中之前生成的不需要的旧文件。<br><em>这一节管理输出一直有报错，未能正常显示页面</em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Uncaught <span class="built_in">ReferenceError</span>: ducument is not defined</span><br><span class="line">    at app.bundle.js:<span class="number">9</span></span><br><span class="line">    at Module.&lt;anonymous&gt; (app.bundle.js:<span class="number">9</span>)</span><br><span class="line">    at r (app.bundle.js:<span class="number">1</span>)</span><br><span class="line">    at app.bundle.js:<span class="number">1</span></span><br><span class="line">    at app.bundle.js:<span class="number">1</span></span><br><span class="line">(anonymous) @ app.bundle.js:<span class="number">9</span></span><br><span class="line">(anonymous) @ app.bundle.js:<span class="number">9</span></span><br><span class="line">r @ app.bundle.js:<span class="number">1</span></span><br><span class="line">(anonymous) @ app.bundle.js:<span class="number">1</span></span><br><span class="line">(anonymous) @ app.bundle.js:<span class="number">1</span></span><br><span class="line"><span class="comment">//浏览器报错</span></span><br><span class="line"></span><br><span class="line">Entrypoint <span class="literal">undefined</span> = index.html<span class="comment">//终端报错，有人说是插件本身的问题</span></span><br></pre></td></tr></table></figure>
+
+<p>按照官网操作来的，这报错真的不明白，之后再看看怎么解决唔，看看github相关插件的issue</p>
+<p>吐血！document拼写错误，见<a href="https://webpack.docschina.org/guides/development" target="_blank" rel="noopener"><code>devtool: &#39;inline-source-map&#39;,</code></a>可跟踪错误至源文件</p>
+
         
       
     </div>
@@ -1040,9 +1044,6 @@
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image"
-      src="/images/avatar.jpg"
-      alt="黄路遥">
   <p class="site-author-name" itemprop="name">黄路遥</p>
   <div class="site-description motion-element" itemprop="description">今天敲代码了吗(´･･)ﾉ(._.`)</div>
 </div>
@@ -1111,30 +1112,6 @@
       </div>
     
   </nav>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/Amybiubiu" title="GitHub &rarr; https://github.com/Amybiubiu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-    
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="mailto:1246457100@qq.com" title="E-Mail &rarr; mailto:1246457100@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-    
-  </div>
 
 
 
@@ -1158,33 +1135,11 @@
   </span>
   <span class="author" itemprop="copyrightHolder">黄路遥</span>
 </div>
-<!--
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
--->
-
 
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-user"></i>
-    </span>
-    <span class="site-uv" title="总访客量">
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-    </span>
-  
-    <span class="post-meta-divider">|</span>
-  
-    <span class="post-meta-item-icon">
-      <i class="fa fa-eye"></i>
-    </span>
-    <span class="site-pv" title="总访问量">
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-    </span>
-  
-</div>
 
 
 
@@ -1229,8 +1184,6 @@
 
 
 
-  <script src="/js/local-search.js?v=7.3.0"></script>
-
 
 
 
@@ -1252,30 +1205,5 @@
 
 
   
-
-<script>
-NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: false,
-    appId: 'g5Cv5iAS2YGuFEIqYof6C3lB-gzGzoHsz',
-    appKey: 'S2eh3R9dYlx3m1EDnnpJmJXu',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: true,
-    lang: '' || 'zh-cn',
-    path: location.pathname
-  });
-}, window.Valine);
-</script>
-
 </body>
 </html>

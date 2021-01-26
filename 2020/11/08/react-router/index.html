@@ -43,7 +43,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -54,20 +54,20 @@
   };
 </script>
 
-  <meta name="description" content="hash 和 history对于单页面应用和多页面应用的url的形式区分是a.com/#/pageone和a.com/pageone.html。在还没有单页面应用的时期，浏览器多充当的是一个展现层，路由处理、服务调用、页面跳转流程都由服务端来处理。看图理解……吧如果是MPA的话，前端是不需要进行路由处理的，而转入SPA的话，大多数时候，对于后端的请求不再是整个html文件，而是“数据”，除了数据之">
+  <meta name="description" content="hash 和 history对于单页面应用和多页面应用的url的形式区分是a.com/#/pageone和a.com/pageone.html。在还没有单页面应用的时期，浏览器多充当的是一个展现层，路由处理、服务调用、页面跳转流程都由服务端来处理。看图理解……吧  如果是MPA的话，前端是不需要进行路由处理的，而转入SPA的话，大多数时候，对于后端的请求不再是整个html文件，而是“数据”，除了数">
 <meta name="keywords" content="页面路由">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react-router">
 <meta property="og:url" content="http://yoursite.com/2020/11/08/react-router/index.html">
 <meta property="og:site_name" content="Amybiubiu">
-<meta property="og:description" content="hash 和 history对于单页面应用和多页面应用的url的形式区分是a.com/#/pageone和a.com/pageone.html。在还没有单页面应用的时期，浏览器多充当的是一个展现层，路由处理、服务调用、页面跳转流程都由服务端来处理。看图理解……吧如果是MPA的话，前端是不需要进行路由处理的，而转入SPA的话，大多数时候，对于后端的请求不再是整个html文件，而是“数据”，除了数据之">
+<meta property="og:description" content="hash 和 history对于单页面应用和多页面应用的url的形式区分是a.com/#/pageone和a.com/pageone.html。在还没有单页面应用的时期，浏览器多充当的是一个展现层，路由处理、服务调用、页面跳转流程都由服务端来处理。看图理解……吧  如果是MPA的话，前端是不需要进行路由处理的，而转入SPA的话，大多数时候，对于后端的请求不再是整个html文件，而是“数据”，除了数">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2020/11/08/react-router/mpa.png">
 <meta property="og:image" content="http://yoursite.com/2020/11/08/react-router/spa.png">
 <meta property="og:updated_time" content="2020-11-08T13:19:29.413Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-router">
-<meta name="twitter:description" content="hash 和 history对于单页面应用和多页面应用的url的形式区分是a.com/#/pageone和a.com/pageone.html。在还没有单页面应用的时期，浏览器多充当的是一个展现层，路由处理、服务调用、页面跳转流程都由服务端来处理。看图理解……吧如果是MPA的话，前端是不需要进行路由处理的，而转入SPA的话，大多数时候，对于后端的请求不再是整个html文件，而是“数据”，除了数据之">
+<meta name="twitter:description" content="hash 和 history对于单页面应用和多页面应用的url的形式区分是a.com/#/pageone和a.com/pageone.html。在还没有单页面应用的时期，浏览器多充当的是一个展现层，路由处理、服务调用、页面跳转流程都由服务端来处理。看图理解……吧  如果是MPA的话，前端是不需要进行路由处理的，而转入SPA的话，大多数时候，对于后端的请求不再是整个html文件，而是“数据”，除了数">
 <meta name="twitter:image" content="http://yoursite.com/2020/11/08/react-router/mpa.png">
   <link rel="canonical" href="http://yoursite.com/2020/11/08/react-router/">
 
@@ -166,39 +166,6 @@
       
       
         
-        <li class="menu-item menu-item-about">
-      
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-tags">
-      
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-categories">
-      
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
-
-  </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-archives">
       
     
@@ -206,36 +173,9 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
-      <li class="menu-item menu-item-search">
-        <a href="javascript:;" class="popup-trigger">
-        
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-      </li>
-    
   </ul>
 
 </nav>
-  <div class="site-search">
-    <div class="popup search-popup">
-    <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-wrapper">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
-           placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result"></div>
-
-</div>
-<div class="search-pop-overlay"></div>
-
-  </div>
 </div>
     </header>
 
@@ -263,7 +203,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="黄路遥">
       <meta itemprop="description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -308,36 +248,6 @@
           
 
           
-            <span id="/2020/11/08/react-router/" class="post-meta-item leancloud_visitors" data-flag-title="react-router" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          
-            <span class="post-meta-item" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/11/08/react-router/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/11/08/react-router/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
 
         </div>
       </header>
@@ -348,9 +258,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="hash-和-history"><a href="#hash-和-history" class="headerlink" title="hash 和 history"></a>hash 和 history</h2><p>对于单页面应用和多页面应用的url的形式区分是<code>a.com/#/pageone</code>和<code>a.com/pageone.html</code>。在还没有单页面应用的时期，浏览器多充当的是一个展现层，路由处理、服务调用、页面跳转流程都由服务端来处理。看图理解……吧</p><p><img src="/2020/11/08/react-router/mpa.png" alt="mpa"><br><img src="/2020/11/08/react-router/spa.png" alt="spa"></p><p>如果是MPA的话，前端是不需要进行路由处理的，而转入SPA的话，大多数时候，对于后端的请求不再是整个html文件，而是“数据”，除了数据之外的有关css,html,js文件之间处理全由前端处理，前端便自然要处理页面路由。……待写</p><a id="more"></a>
-
-
+        <h2 id="hash-和-history"><a href="#hash-和-history" class="headerlink" title="hash 和 history"></a>hash 和 history</h2><p>对于单页面应用和多页面应用的url的形式区分是<code>a.com/#/pageone</code>和<code>a.com/pageone.html</code>。在还没有单页面应用的时期，浏览器多充当的是一个展现层，路由处理、服务调用、页面跳转流程都由服务端来处理。看图理解……吧</p>
+<p><img src="/2020/11/08/react-router/mpa.png" alt="mpa"><br><img src="/2020/11/08/react-router/spa.png" alt="spa"></p>
+<p>如果是MPA的话，前端是不需要进行路由处理的，而转入SPA的话，大多数时候，对于后端的请求不再是整个html文件，而是“数据”，除了数据之外的有关css,html,js文件之间处理全由前端处理，前端便自然要处理页面路由。……待写</p>
 <h2 id="react-router-官网学习记录"><a href="#react-router-官网学习记录" class="headerlink" title="react-router 官网学习记录"></a>react-router 官网学习记录</h2><h2 id="在react应用中，获取当前页面路由及代码实现路由切换"><a href="#在react应用中，获取当前页面路由及代码实现路由切换" class="headerlink" title="在react应用中，获取当前页面路由及代码实现路由切换"></a>在react应用中，获取当前页面路由及代码实现路由切换</h2><p><strong>参考文档</strong></p>
 <ul>
 <li><a href="http://tinyambition.com/Single-Page-App-Break/%E7%AC%AC01%E7%AB%A0%20%E4%BD%95%E4%B8%BA%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8.html" target="_blank" rel="noopener">一本关于单页面应用的gitbook</a></li>
@@ -410,9 +320,6 @@
 
           </div>
           
-    
-    <div class="comments" id="comments"></div>
-  
 
         </div>
           
@@ -441,9 +348,6 @@
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image"
-      src="/images/avatar.jpg"
-      alt="黄路遥">
   <p class="site-author-name" itemprop="name">黄路遥</p>
   <div class="site-description motion-element" itemprop="description">今天敲代码了吗(´･･)ﾉ(._.`)</div>
 </div>
@@ -512,30 +416,6 @@
       </div>
     
   </nav>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/Amybiubiu" title="GitHub &rarr; https://github.com/Amybiubiu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-    
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="mailto:1246457100@qq.com" title="E-Mail &rarr; mailto:1246457100@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-    
-  </div>
 
 
 
@@ -576,33 +456,11 @@
   </span>
   <span class="author" itemprop="copyrightHolder">黄路遥</span>
 </div>
-<!--
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
--->
-
 
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-user"></i>
-    </span>
-    <span class="site-uv" title="总访客量">
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-    </span>
-  
-    <span class="post-meta-divider">|</span>
-  
-    <span class="post-meta-item-icon">
-      <i class="fa fa-eye"></i>
-    </span>
-    <span class="site-pv" title="总访问量">
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-    </span>
-  
-</div>
 
 
 
@@ -647,8 +505,6 @@
 
 
 
-  <script src="/js/local-search.js?v=7.3.0"></script>
-
 
 
 
@@ -672,31 +528,6 @@
   
   <script src="/js/scrollspy.js?v=7.3.0"></script><script src="/js/post-details.js?v=7.3.0"></script>
 
-
-
-<script>
-NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: false,
-    appId: 'g5Cv5iAS2YGuFEIqYof6C3lB-gzGzoHsz',
-    appKey: 'S2eh3R9dYlx3m1EDnnpJmJXu',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: true,
-    lang: '' || 'zh-cn',
-    path: location.pathname
-  });
-}, window.Valine);
-</script>
 
 </body>
 </html>

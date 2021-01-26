@@ -43,7 +43,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -54,18 +54,18 @@
   };
 </script>
 
-  <meta name="description" content="什么是异步12setTimeout(()=&amp;gt;&amp;#123;console.log(&quot;路&quot;)&amp;#125;,1000);console.log(&quot;遥&quot;); // 遥路在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在这个">
+  <meta name="description" content="什么是异步12setTimeout(()=&amp;gt;&amp;#123;console.log(&quot;路&quot;)&amp;#125;,1000);console.log(&quot;遥&quot;); // 遥路  在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS 异步">
 <meta property="og:url" content="http://yoursite.com/2020/01/23/JS-异步/index.html">
 <meta property="og:site_name" content="Amybiubiu">
-<meta property="og:description" content="什么是异步12setTimeout(()=&amp;gt;&amp;#123;console.log(&quot;路&quot;)&amp;#125;,1000);console.log(&quot;遥&quot;); // 遥路在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在这个">
+<meta property="og:description" content="什么是异步12setTimeout(()=&amp;gt;&amp;#123;console.log(&quot;路&quot;)&amp;#125;,1000);console.log(&quot;遥&quot;); // 遥路  在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2020-05-01T13:02:34.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS 异步">
-<meta name="twitter:description" content="什么是异步12setTimeout(()=&amp;gt;&amp;#123;console.log(&quot;路&quot;)&amp;#125;,1000);console.log(&quot;遥&quot;); // 遥路在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在这个">
+<meta name="twitter:description" content="什么是异步12setTimeout(()=&amp;gt;&amp;#123;console.log(&quot;路&quot;)&amp;#125;,1000);console.log(&quot;遥&quot;); // 遥路  在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在">
   <link rel="canonical" href="http://yoursite.com/2020/01/23/JS-异步/">
 
 
@@ -163,39 +163,6 @@
       
       
         
-        <li class="menu-item menu-item-about">
-      
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-tags">
-      
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-categories">
-      
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
-
-  </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-archives">
       
     
@@ -203,36 +170,9 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
-      <li class="menu-item menu-item-search">
-        <a href="javascript:;" class="popup-trigger">
-        
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-      </li>
-    
   </ul>
 
 </nav>
-  <div class="site-search">
-    <div class="popup search-popup">
-    <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-wrapper">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
-           placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result"></div>
-
-</div>
-<div class="search-pop-overlay"></div>
-
-  </div>
 </div>
     </header>
 
@@ -260,7 +200,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="黄路遥">
       <meta itemprop="description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -313,36 +253,6 @@
           
 
           
-            <span id="/2020/01/23/JS-异步/" class="post-meta-item leancloud_visitors" data-flag-title="JS 异步" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          
-            <span class="post-meta-item" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/01/23/JS-异步/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2020/01/23/JS-异步/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
 
         </div>
       </header>
@@ -353,9 +263,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="什么是异步"><a href="#什么是异步" class="headerlink" title="什么是异步"></a>什么是异步</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;<span class="built_in">console</span>.log(<span class="string">"路"</span>)&#125;,<span class="number">1000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"遥"</span>); <span class="comment">// 遥路</span></span><br></pre></td></tr></table></figure><p>在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。<br>正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在这个程序 中引入了异步机制。</p><a id="more"></a>
+        <h4 id="什么是异步"><a href="#什么是异步" class="headerlink" title="什么是异步"></a>什么是异步</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;<span class="built_in">console</span>.log(<span class="string">"路"</span>)&#125;,<span class="number">1000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"遥"</span>); <span class="comment">// 遥路</span></span><br></pre></td></tr></table></figure>
 
-
+<p>在1000s的时间（需要较长时间响应的事件）内执行了下一块代码。<br>正确说法：任何时候，只要把一段代码包装成一个函数，并指定它在响应某个事件(定时器、鼠标点 击、Ajax 响应等)时执行，你就是在代码中创建了一个将来执行的块，也由此在这个程序 中引入了异步机制。</p>
 <h4 id="传统的实现异步的方式"><a href="#传统的实现异步的方式" class="headerlink" title="传统的实现异步的方式"></a>传统的实现异步的方式</h4><ul>
 <li>回调</li>
 <li><a href="https://www.ruanyifeng.com/blog/2012/12/asynchronous%EF%BC%BFjavascript.html" target="_blank" rel="noopener">其他</a></li>
@@ -469,9 +379,6 @@
 
           </div>
           
-    
-    <div class="comments" id="comments"></div>
-  
 
         </div>
           
@@ -500,9 +407,6 @@
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image"
-      src="/images/avatar.jpg"
-      alt="黄路遥">
   <p class="site-author-name" itemprop="name">黄路遥</p>
   <div class="site-description motion-element" itemprop="description">今天敲代码了吗(´･･)ﾉ(._.`)</div>
 </div>
@@ -571,30 +475,6 @@
       </div>
     
   </nav>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/Amybiubiu" title="GitHub &rarr; https://github.com/Amybiubiu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-    
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="mailto:1246457100@qq.com" title="E-Mail &rarr; mailto:1246457100@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-    
-  </div>
 
 
 
@@ -635,33 +515,11 @@
   </span>
   <span class="author" itemprop="copyrightHolder">黄路遥</span>
 </div>
-<!--
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
--->
-
 
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-user"></i>
-    </span>
-    <span class="site-uv" title="总访客量">
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-    </span>
-  
-    <span class="post-meta-divider">|</span>
-  
-    <span class="post-meta-item-icon">
-      <i class="fa fa-eye"></i>
-    </span>
-    <span class="site-pv" title="总访问量">
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-    </span>
-  
-</div>
 
 
 
@@ -706,8 +564,6 @@
 
 
 
-  <script src="/js/local-search.js?v=7.3.0"></script>
-
 
 
 
@@ -731,31 +587,6 @@
   
   <script src="/js/scrollspy.js?v=7.3.0"></script><script src="/js/post-details.js?v=7.3.0"></script>
 
-
-
-<script>
-NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: false,
-    appId: 'g5Cv5iAS2YGuFEIqYof6C3lB-gzGzoHsz',
-    appKey: 'S2eh3R9dYlx3m1EDnnpJmJXu',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: true,
-    lang: '' || 'zh-cn',
-    path: location.pathname
-  });
-}, window.Valine);
-</script>
 
 </body>
 </html>

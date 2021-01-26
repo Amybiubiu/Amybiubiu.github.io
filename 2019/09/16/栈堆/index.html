@@ -43,7 +43,7 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
@@ -54,19 +54,19 @@
   };
 </script>
 
-  <meta name="description" content="数据结构的栈和堆 栈：只能在表的一端进行插入和删除的线性表。具有先进后出的性质，可以理解为装数据的桶。 堆：经过排序的树形数据结构。 内存分配的栈和堆（以c++编译程序为例）存放区域   区域 作用    栈区（stack） 由编译器自动分配和释放，存放函数的参数值，局部变量的值等。操作方式类似与数据结构中的栈   堆区（heap） 一般由程序员分配和释放，若程序员不释放，程序结束时可能由操作系统">
+  <meta name="description" content="数据结构的栈和堆 栈：只能在表的一端进行插入和删除的线性表。具有先进后出的性质，可以理解为装数据的桶。 堆：经过排序的树形数据结构。  内存分配的栈和堆（以c++编译程序为例）存放区域   区域 作用    栈区（stack） 由编译器自动分配和释放，存放函数的参数值，局部变量的值等。操作方式类似与数据结构中的栈   堆区（heap） 一般由程序员分配和释放，若程序员不释放，程序结束时可能由操作系">
 <meta name="keywords" content="C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="栈堆">
 <meta property="og:url" content="http://yoursite.com/2019/09/16/栈堆/index.html">
 <meta property="og:site_name" content="Amybiubiu">
-<meta property="og:description" content="数据结构的栈和堆 栈：只能在表的一端进行插入和删除的线性表。具有先进后出的性质，可以理解为装数据的桶。 堆：经过排序的树形数据结构。 内存分配的栈和堆（以c++编译程序为例）存放区域   区域 作用    栈区（stack） 由编译器自动分配和释放，存放函数的参数值，局部变量的值等。操作方式类似与数据结构中的栈   堆区（heap） 一般由程序员分配和释放，若程序员不释放，程序结束时可能由操作系统">
+<meta property="og:description" content="数据结构的栈和堆 栈：只能在表的一端进行插入和删除的线性表。具有先进后出的性质，可以理解为装数据的桶。 堆：经过排序的树形数据结构。  内存分配的栈和堆（以c++编译程序为例）存放区域   区域 作用    栈区（stack） 由编译器自动分配和释放，存放函数的参数值，局部变量的值等。操作方式类似与数据结构中的栈   堆区（heap） 一般由程序员分配和释放，若程序员不释放，程序结束时可能由操作系">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2019/09/16/栈堆/stack1.jpeg">
 <meta property="og:updated_time" content="2020-05-01T13:12:23.937Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="栈堆">
-<meta name="twitter:description" content="数据结构的栈和堆 栈：只能在表的一端进行插入和删除的线性表。具有先进后出的性质，可以理解为装数据的桶。 堆：经过排序的树形数据结构。 内存分配的栈和堆（以c++编译程序为例）存放区域   区域 作用    栈区（stack） 由编译器自动分配和释放，存放函数的参数值，局部变量的值等。操作方式类似与数据结构中的栈   堆区（heap） 一般由程序员分配和释放，若程序员不释放，程序结束时可能由操作系统">
+<meta name="twitter:description" content="数据结构的栈和堆 栈：只能在表的一端进行插入和删除的线性表。具有先进后出的性质，可以理解为装数据的桶。 堆：经过排序的树形数据结构。  内存分配的栈和堆（以c++编译程序为例）存放区域   区域 作用    栈区（stack） 由编译器自动分配和释放，存放函数的参数值，局部变量的值等。操作方式类似与数据结构中的栈   堆区（heap） 一般由程序员分配和释放，若程序员不释放，程序结束时可能由操作系">
 <meta name="twitter:image" content="http://yoursite.com/2019/09/16/栈堆/stack1.jpeg">
   <link rel="canonical" href="http://yoursite.com/2019/09/16/栈堆/">
 
@@ -165,39 +165,6 @@
       
       
         
-        <li class="menu-item menu-item-about">
-      
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-tags">
-      
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-categories">
-      
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
-
-  </li>
-      
-      
-      
-        
         <li class="menu-item menu-item-archives">
       
     
@@ -205,36 +172,9 @@
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
-      <li class="menu-item menu-item-search">
-        <a href="javascript:;" class="popup-trigger">
-        
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-      </li>
-    
   </ul>
 
 </nav>
-  <div class="site-search">
-    <div class="popup search-popup">
-    <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-wrapper">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
-           placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result"></div>
-
-</div>
-<div class="search-pop-overlay"></div>
-
-  </div>
 </div>
     </header>
 
@@ -262,7 +202,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="黄路遥">
       <meta itemprop="description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -302,36 +242,6 @@
           
 
           
-            <span id="/2019/09/16/栈堆/" class="post-meta-item leancloud_visitors" data-flag-title="栈堆" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-          
-            <span class="post-meta-item" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-        
-      
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2019/09/16/栈堆/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/16/栈堆/" itemprop="commentCount"></span></a>
-  </span>
-  
-  
 
         </div>
       </header>
@@ -345,7 +255,8 @@
         <h3 id="数据结构的栈和堆"><a href="#数据结构的栈和堆" class="headerlink" title="数据结构的栈和堆"></a>数据结构的栈和堆</h3><ul>
 <li>栈：只能在表的一端进行插入和删除的线性表。具有先进后出的性质，可以理解为装数据的桶。</li>
 <li>堆：经过排序的树形数据结构。</li>
-</ul><h3 id="内存分配的栈和堆（以c-编译程序为例）"><a href="#内存分配的栈和堆（以c-编译程序为例）" class="headerlink" title="内存分配的栈和堆（以c++编译程序为例）"></a>内存分配的栈和堆（以c++编译程序为例）</h3><h4 id="存放区域"><a href="#存放区域" class="headerlink" title="存放区域"></a>存放区域</h4><table>
+</ul>
+<h3 id="内存分配的栈和堆（以c-编译程序为例）"><a href="#内存分配的栈和堆（以c-编译程序为例）" class="headerlink" title="内存分配的栈和堆（以c++编译程序为例）"></a>内存分配的栈和堆（以c++编译程序为例）</h3><h4 id="存放区域"><a href="#存放区域" class="headerlink" title="存放区域"></a>存放区域</h4><table>
 <thead>
 <tr>
 <th>区域</th>
@@ -372,8 +283,7 @@
 <td>程序代码区</td>
 <td align="center">存放函数体的二进制代码</td>
 </tr>
-</tbody></table><a id="more"></a>
-
+</tbody></table>
 <h4 id="没有手动释放堆区的情况"><a href="#没有手动释放堆区的情况" class="headerlink" title="没有手动释放堆区的情况"></a>没有手动释放堆区的情况</h4><p>1 从C语言本身设计来说，不会释放。<br>所谓动态内存，是由malloc系列函数进行申请的内存，除非在程序中使用free释放，否则该段内存不会被释放掉。<br>从这个角度来说，即使进程结束，该段内存也会被占用。这种现象被称为内存泄露。<br>2 大多数操作系统可以智能释放。<br>动态内存由于是进程使用，向操作系统控制方申请的内存，所以操作系统内核可以记录哪些内存由哪个进程使用，这样为了减少内存泄露的危害，操作系统内核均实现了在进程退出后，进程分配的自用内存自动回收的机制。</p>
 <p><img src="/2019/09/16/栈堆/stack1.jpeg" alt="图片"></p>
 <h4 id="来看一个例子"><a href="#来看一个例子" class="headerlink" title="来看一个例子"></a>来看一个例子</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//main.cpp</span></span><br><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>;<span class="comment">//全局初始化区</span></span><br><span class="line"><span class="keyword">char</span> *p1;<span class="comment">//全局未初始化区，p1是以地址为数据么？</span></span><br><span class="line">main()&#123;</span><br><span class="line">    <span class="keyword">int</span> b;<span class="comment">//栈</span></span><br><span class="line">    <span class="keyword">char</span> s[] = <span class="string">"abc"</span>;<span class="comment">//栈 “abc”也是在栈区么？还是在常量区？与p3的区别？数组在定义初始化的时候就在栈区开辟了一段连续的内存空间</span></span><br><span class="line">    <span class="keyword">char</span> *p2 ;<span class="comment">//栈</span></span><br><span class="line">    <span class="keyword">char</span> *p3 = <span class="string">"123456"</span>;<span class="comment">//p3在栈区；"12345\0"在常量区，为什么不在堆区？因为没有申请储存空间，只能存放在常量区</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> c =<span class="number">0</span>;</span><br><span class="line">    p1 = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(<span class="number">10</span>);</span><br><span class="line">    p2 = (<span class="keyword">char</span> *)<span class="built_in">malloc</span>(<span class="number">20</span>);<span class="comment">//分配得来得10和20字节的区域就在堆区。</span></span><br><span class="line">    <span class="built_in">strcpy</span>(p1,<span class="string">"123456"</span>);<span class="comment">//123456\0放在常量区。编译器可能会将它与p3所指向的"123456"优化成一个地方</span></span><br><span class="line">    <span class="built_in">strcpy</span>(p2,<span class="string">"abcdef"</span>);<span class="comment">//把常量区的"abcdef"拷贝一份到申请的堆区</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -444,9 +354,6 @@
 
           </div>
           
-    
-    <div class="comments" id="comments"></div>
-  
 
         </div>
           
@@ -475,9 +382,6 @@
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image"
-      src="/images/avatar.jpg"
-      alt="黄路遥">
   <p class="site-author-name" itemprop="name">黄路遥</p>
   <div class="site-description motion-element" itemprop="description">今天敲代码了吗(´･･)ﾉ(._.`)</div>
 </div>
@@ -546,30 +450,6 @@
       </div>
     
   </nav>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="https://github.com/Amybiubiu" title="GitHub &rarr; https://github.com/Amybiubiu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-      </span>
-    
-      <span class="links-of-author-item">
-      
-      
-        
-      
-      
-        
-      
-        <a href="mailto:1246457100@qq.com" title="E-Mail &rarr; mailto:1246457100@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-      </span>
-    
-  </div>
 
 
 
@@ -610,33 +490,11 @@
   </span>
   <span class="author" itemprop="copyrightHolder">黄路遥</span>
 </div>
-<!--
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.3.0</div>
--->
-
 
         
-<div class="busuanzi-count">
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <span class="post-meta-item-icon">
-      <i class="fa fa-user"></i>
-    </span>
-    <span class="site-uv" title="总访客量">
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-    </span>
-  
-    <span class="post-meta-divider">|</span>
-  
-    <span class="post-meta-item-icon">
-      <i class="fa fa-eye"></i>
-    </span>
-    <span class="site-pv" title="总访问量">
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-    </span>
-  
-</div>
 
 
 
@@ -681,8 +539,6 @@
 
 
 
-  <script src="/js/local-search.js?v=7.3.0"></script>
-
 
 
 
@@ -706,31 +562,6 @@
   
   <script src="/js/scrollspy.js?v=7.3.0"></script><script src="/js/post-details.js?v=7.3.0"></script>
 
-
-
-<script>
-NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: false,
-    appId: 'g5Cv5iAS2YGuFEIqYof6C3lB-gzGzoHsz',
-    appKey: 'S2eh3R9dYlx3m1EDnnpJmJXu',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: true,
-    lang: '' || 'zh-cn',
-    path: location.pathname
-  });
-}, window.Valine);
-</script>
 
 </body>
 </html>

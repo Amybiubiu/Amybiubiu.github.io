@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Redux 相关]]></title>
+    <url>%2F2020%2F11%2F08%2FRedux-%E7%9B%B8%E5%85%B3%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>状态管理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[react-router]]></title>
+    <url>%2F2020%2F11%2F08%2Freact-router%2F</url>
+    <content type="text"><![CDATA[hash 和 history对于单页面应用和多页面应用的url的形式区分是a.com/#/pageone和a.com/pageone.html。在还没有单页面应用的时期，浏览器多充当的是一个展现层，路由处理、服务调用、页面跳转流程都由服务端来处理。看图理解……吧如果是MPA的话，前端是不需要进行路由处理的，而转入SPA的话，大多数时候，对于后端的请求不再是整个html文件，而是“数据”，除了数据之外的有关css,html,js文件之间处理全由前端处理，前端便自然要处理页面路由。……待写 react-router 官网学习记录在react应用中，获取当前页面路由及代码实现路由切换参考文档 一本关于单页面应用的gitbook]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>页面路由</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[react hooks in practice]]></title>
     <url>%2F2020%2F09%2F28%2Freact-hooks-in-practice%2F</url>
     <content type="text"><![CDATA[useState和 react 的 this.state 是一个东西useEffect在 component.DidMount 和 componnet.DidUpdate 这两个生命周期内执行。如果在useEffect中有return的话，return部分在componnetWillUnmount阶段调用。 关于 useEffect 第二个参数的三种情况：codesandbox 不写。视情况而定，会发生语法报错，说：缺失依赖值，可能会导致对依赖的无限查找。不写就是默认对你所有用到的值变化的时候执行。 空数组[]。当useEffect 中用到了依赖值，却设置了空依赖列表，会发生报错，强制忽略报错，可以用来阻止代码执行。 正常情况下的所用值形成的依赖列表。 useEffect 的应用： 有些在浏览器中才能使用的，而在build阶段不可以使用的，比如 localstorage, react router中的location.state.xxx,这部分的代码可以写为 useEffect(...some code...,[]) 结合 useRef 写一个自定义hook储存 previous state。（下文中的demo还显示了 useRef 和 组件外部变量的应用区别。）codesandbox 设置定时器，对input输入内容的防抖。oi-wiki-search.jscodesandbox useContext当一个较深层次的子组件要使用父组件的一些值的时候，使用useContext可以避免props层层传递的累赘，而直接在context.provider包裹下的组件中，使用context.consumer或者useContext获取顶层父组件的值（provider value)，而不单单是上一层父组件的值。 可以应用在主题和语言设置上。intl context provider部分intl context consumer部分intl useContext 部分 或许可以考虑写一个单独demo出来？？ useCallback 、 useMemo and React.Memo这三者都有很大的相似性。react 在对props进行相等性检查时，对于相同值但是代码来源不同的数组和对象的对比结果会为false，这就导致很多不必要的重计算和重渲染，这三个API都可以用来处理这个问题。 1234567//相等性检查const n1 = 1const n2 = 1n1 === n2 // trueconst a1 = [1]const a2 = [1]a1 === a2 // false 在下面这个demo可以看到，options的值没有变化，可是由于js的工作机制，在上层组件（在demo中上层组件是App）发生更新时，每次传入 Apple 组件的参数，都被认为是新的，useEffect的回调函数进行了re-run，（re-render了吗？可由devtools监测到HTML元素）,并且在codesandbox也可以看到(react-hooks/exhaustive-deps)eslint给出的使用useMemo的修改建议。 123456789101112131415161718192021222324import React,&#123;useEffect, useState&#125; from "react";import "./styles.css";const Apple = (&#123;time,count&#125;) =&gt; &#123; const options = &#123;time,count&#125; useEffect(()=&gt;&#123; console.log(`thers is $&#123;options&#125; apples`) &#125;,[options]) return( &lt;div&gt;apple&lt;/div&gt; )&#125;export default function App() &#123; const [girl,setGirl] = useState(0) const [count,setCount] = useState(0) const [time,setTime] = useState(0) return ( &lt;div className="App"&gt; &lt;h1 onClick=&#123;() =&gt; setGirl(girl+1)&#125;&gt;&#123;girl&#125;&lt;/h1&gt; &lt;h2&gt;Start editing to see some magic happen!&lt;/h2&gt; &lt;Apple count=&#123;count&#125; time = &#123;time&#125; /&gt; &lt;/div&gt; );&#125; 但是参看博客，任何性能优化都具有代价，在进行使用前都应该测量一下，性能优化的代价是不是足以抵销重计算的时间。 useRefuseRef 会在每次渲染时返回同一个 ref 对象，并且变更 .current 属性的变化不会引发组件重新渲染。 官方文档的应用示例：阻止input框不必要的rerender 12345678910111213141516function App() &#123; const [value, setValue] = React.useState(""); const valueRef = React.useRef(); const handleClick = e =&gt; &#123; setValue(valueRef.current.value); &#125;; return ( &lt;div className="App"&gt; &lt;h4&gt;Value: &#123;value&#125;&lt;/h4&gt; &lt;input ref=&#123;valueRef&#125; /&gt; &lt;Button onClick=&#123;handleClick&#125;&gt;Button&lt;/Button&gt; &lt;/div&gt; );&#125;]]></content>

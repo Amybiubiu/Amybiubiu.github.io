@@ -54,16 +54,16 @@
   };
 </script>
 
-  <meta name="description" content="沉心静气，就地修仙">
+  <meta name="description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Luyao">
+<meta property="og:title" content="Amybiubiu">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="Luyao">
-<meta property="og:description" content="沉心静气，就地修仙">
+<meta property="og:site_name" content="Amybiubiu">
+<meta property="og:description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Luyao">
-<meta name="twitter:description" content="沉心静气，就地修仙">
+<meta name="twitter:title" content="Amybiubiu">
+<meta name="twitter:description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
   <link rel="canonical" href="http://yoursite.com/page/2/">
 
 
@@ -78,7 +78,7 @@
   };
 </script>
 
-  <title>Luyao</title>
+  <title>Amybiubiu</title>
   <meta name="generator" content="Hexo 3.9.0">
   
 
@@ -127,7 +127,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Luyao</span>
+        <span class="site-title">Amybiubiu</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -252,16 +252,275 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/栈堆/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/13/作用域/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="黄路遥">
-      <meta itemprop="description" content="沉心静气，就地修仙">
+      <meta itemprop="description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Luyao">
+      <meta itemprop="name" content="Amybiubiu">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/11/13/作用域/" class="post-title-link" itemprop="url">作用域</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-13 19:56:59" itemprop="dateCreated datePublished" datetime="2019-11-13T19:56:59+08:00">2019-11-13</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-01 21:05:10" itemprop="dateModified" datetime="2020-05-01T21:05:10+08:00">2020-05-01</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span id="/2019/11/13/作用域/" class="post-meta-item leancloud_visitors" data-flag-title="作用域" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/11/13/作用域/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/11/13/作用域/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="动态作用域与词法作用域"><a href="#动态作用域与词法作用域" class="headerlink" title="动态作用域与词法作用域"></a>动态作用域与词法作用域</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a );</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">    foo();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>; bar();</span><br><span class="line"><span class="comment">//什么状况，为什么是2，而不是undifined？啊，我知道了，上面那条是由于a=2留在原地等待执行，console执行在前，在此例中执行bar执行在后，不是说关注声明么，是的，关注声明只是让你找对容器，而容器里装什么与声明无关，所以并不矛盾。</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/11/13/作用域/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/18/函数调用栈/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="黄路遥">
+      <meta itemprop="description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amybiubiu">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/09/18/函数调用栈/" class="post-title-link" itemprop="url">函数调用栈</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-18 17:43:23" itemprop="dateCreated datePublished" datetime="2019-09-18T17:43:23+08:00">2019-09-18</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-01 21:12:12" itemprop="dateModified" datetime="2020-05-01T21:12:12+08:00">2020-05-01</time>
+              </span>
+            
+          
+
+          
+            <span id="/2019/09/18/函数调用栈/" class="post-meta-item leancloud_visitors" data-flag-title="函数调用栈" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+        
+      
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/09/18/函数调用栈/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/18/函数调用栈/" itemprop="commentCount"></span></a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="不同语言之间的转换"><a href="#不同语言之间的转换" class="headerlink" title="不同语言之间的转换"></a>不同语言之间的转换</h4><ul>
+<li><p>高级程序语言经过编译，变成汇编代码，汇编代码经过汇编器和连接器变成可执行的机器代码。汇编代码是人类可读的代码。机器代码是01序列。</p>
+</li>
+<li><p>在程序执行前，数据和指令事先存放在存储器中，每条指令和每个数据都有地址。程序启动后，计算机取指令执行。执行过程中，指令和数据从存储器取到CPU，存放到CPU寄存器中，CPU内的寄存器与控制器与ALU进行数据传送与运算，将运算结果写入内存中（存储器）。</p>
+<!-- ![IA-32的体系结构](函数调用栈/pic2.png) -->
+<!-- ![ALU结构原理](函数调用栈/pic3.png) -->
+<div align="center">
+<img src="/2019/09/18/函数调用栈/pic2.png" height="200px" width="400px">
+</div>
+<div align="center">
+<img src="/2019/09/18/函数调用栈/pic3.png" height="200px" width="400px">
+</div>
+</li>
+<li><p>寄存器<br>IA-32体系中，有8个通用寄存器GPR，2个专用寄存器EIP和EFLAGs和六个段寄存器，间接给出段基址。</p>
+<!-- ![寄存器](函数调用栈/pic7.png) -->
+<div align="center">
+<img src="/2019/09/18/函数调用栈/pic7.png" height="200px" width="400px">
+</div>
+
+</li>
+</ul>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/09/18/函数调用栈/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/栈堆/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="黄路遥">
+      <meta itemprop="description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Amybiubiu">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -399,12 +658,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="黄路遥">
-      <meta itemprop="description" content="沉心静气，就地修仙">
+      <meta itemprop="description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Luyao">
+      <meta itemprop="name" content="Amybiubiu">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -500,12 +759,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="黄路遥">
-      <meta itemprop="description" content="沉心静气，就地修仙">
+      <meta itemprop="description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Luyao">
+      <meta itemprop="name" content="Amybiubiu">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -633,12 +892,12 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="黄路遥">
-      <meta itemprop="description" content="沉心静气，就地修仙">
+      <meta itemprop="description" content="今天敲代码了吗(´･･)ﾉ(._.`)">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Luyao">
+      <meta itemprop="name" content="Amybiubiu">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -785,14 +1044,14 @@
       src="/images/avatar.jpg"
       alt="黄路遥">
   <p class="site-author-name" itemprop="name">黄路遥</p>
-  <div class="site-description motion-element" itemprop="description">沉心静气，就地修仙</div>
+  <div class="site-description motion-element" itemprop="description">今天敲代码了吗(´･･)ﾉ(._.`)</div>
 </div>
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">16</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -811,7 +1070,9 @@
         
           
         
-        <span class="site-state-item-count">2</span>
+          
+        
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -840,7 +1101,11 @@
         
           
         
-        <span class="site-state-item-count">7</span>
+          
+        
+          
+        
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -887,7 +1152,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
